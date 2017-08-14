@@ -14,7 +14,9 @@
     "preview": "rm -rf ./build && NODE_ENV=\"production\" webpack-dashboard -t 'Preview Mode - Marvin' -- webpack-dev-server",
     "hook-add": "prepush install",
     "hook-remove": "prepush remove",
-    "upgrade": "node node_modules/npm-check-updates/bin/ncu -u --semverLevel major && npm prune && npm install"
+    "upgrade": "node node_modules/npm-check-updates/bin/ncu -u --semverLevel major && npm prune && npm install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "autoprefixer": "6.7.7",
@@ -59,6 +61,7 @@
     "babel-polyfill": "6.23.0",
     "css-loader": "^0.28.4",
     "es6-promise": "3.3.1",
+    "gh-pages": "^1.0.0",
     "immutable": "3.8.1",
     "isomorphic-fetch": "2.2.1",
     "prop-types": "15.5.10",
@@ -71,10 +74,10 @@
     "redux-thunk": "2.2.0",
     "style-loader": "^0.18.2"
   },
-  "description": "Starter boilerplate for React and Redux, using Webpack 2",
+  "description": "Legacy Simulator",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Stanko/react-redux-webpack2-boilerplate.git"
+    "url": "git+ssh://git@github.com/Tegas/legacy-sim.git"
   },
   "keywords": [
     "react",
@@ -82,11 +85,11 @@
     "webpack2",
     "boilerplate"
   ],
-  "author": "Stanko",
+  "author": "Tegas",
   "bugs": {
-    "url": "https://github.com/Stanko/react-redux-webpack2-boilerplate/issues"
+    "url": "https://github.com/Tegas/legacy-sim/issues"
   },
-  "homepage": "https://github.com/Stanko/react-redux-webpack2-boilerplate#readme",
+  "homepage": "https://github.com/Tegas/legacy-sim",
   "prepush": [
     "npm run lint-break-on-errors --silent"
   ]
