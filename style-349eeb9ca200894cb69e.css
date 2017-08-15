@@ -511,25 +511,6 @@ button:hover {
     .Page {
       margin: 0 0 0 20rem; } }
 
-.Example {
-  background: #F6F8FA;
-  padding: 2rem;
-  border-radius: 0.4rem; }
-
-.Example .Icon {
-  margin-right: 10px; }
-
-.BackgroundImgExample {
-  background-image: url(/legacy-sim/assets/book1-dbff2b40ab3fe637247770798269fd9a.jpg);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 16rem;
-  max-width: 25rem; }
-
-.ImgExample {
-  max-width: 25rem; }
-
 hr {
   border: 0;
   border-top: 1px solid #eee;
