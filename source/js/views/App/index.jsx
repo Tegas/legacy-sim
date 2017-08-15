@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Dashboard from 'views/Dashboard';
@@ -23,7 +23,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className='App'>
           <Menu />
           <div className='Page'>
@@ -35,7 +35,7 @@ export default class App extends Component {
             </Switch>
           </div>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

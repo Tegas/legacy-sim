@@ -22,7 +22,7 @@ const DruidView = ({
       <XAxis dataKey='rankDescription' />
       <YAxis />
       <Legend />
-      <Tooltip/>
+      <Tooltip />
       <CartesianGrid strokeDasharray='3 3' />
     </LineChart>
     <form className='pure-form pure-form-aligned'>

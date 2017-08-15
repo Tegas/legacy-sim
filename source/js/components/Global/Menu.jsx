@@ -29,13 +29,6 @@ export default class Menu extends Component {
           >
             About
           </NavLink>
-          <NavLink
-            activeClassName='Menu-link--active'
-            className='Menu-link'
-            to='404'
-          >
-            404
-          </NavLink>
         </div>
       </div>
     );

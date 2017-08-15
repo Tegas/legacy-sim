@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { LineChart } from 'react-d3-basic';
-import ReactDOM from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
@@ -17,10 +15,6 @@ import {
 } from './index';
 
 class druidContainer extends Component {
-
-  componentDidMount() {
-  
-  }
 
   render() {
     return (

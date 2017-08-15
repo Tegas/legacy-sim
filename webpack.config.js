@@ -4,6 +4,7 @@ const path = require('path');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const SpritePlugin = require('svg-sprite-loader/plugin');
 const autoprefixer = require('autoprefixer');
 
@@ -116,7 +117,10 @@ if (isProduction) {
         comments: false,
       },
     }),
-    new ExtractTextPlugin('style-[hash].css')
+    new ExtractTextPlugin('style-[hash].css'),
+    new CopyWebpackPlugin([
+      { from: '../assets/css/pure-nr-min.css', to: 'assets/css/pure-nr-min.css' },
+    ])
   );
 
   // Production rules
@@ -164,7 +168,7 @@ module.exports = {
   },
   output: {
     path: buildPath,
-    publicPath: '/',
+    publicPath: '/legacy-sim/',
     filename: 'app-[hash].js',
   },
   module: {
@@ -185,8 +189,8 @@ module.exports = {
     compress: isProduction,
     inline: !isProduction,
     hot: !isProduction,
+    publicPath: '/legacy-sim',
     open: true,
-    openPage: 'druid',
     host: '0.0.0.0',
     disableHostCheck: true,
     stats: {
