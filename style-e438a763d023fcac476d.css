@@ -515,3 +515,6 @@ hr {
   border: 0;
   border-top: 1px solid #eee;
   margin: 2rem 0; }
+
+.recharts-responsive-container {
+  font-size: 66.6666%; }
