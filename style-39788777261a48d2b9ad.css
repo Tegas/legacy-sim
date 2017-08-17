@@ -518,3 +518,9 @@ hr {
 
 .recharts-responsive-container {
   font-size: 66.6666%; }
+
+.rightAlign {
+  text-align: right; }
+
+.pure-table-striped {
+  width: 100%; }
