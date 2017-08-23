@@ -17,26 +17,30 @@ export const getHealingTable = (formValues = {}, spellTable) => (
     const totalCrit = Math.min(critFromInt + (+values.crit || 0), 100);
 
     const bonusHeal = (coefficient * (+values.healing || 0));
-    let minHeal = spell.min + bonusHeal;
-    let maxHeal = spell.max + bonusHeal;
-    const minCritBonus = ((minHeal / 2) * (totalCrit / 100));
-    const maxCritBonus = ((maxHeal / 2) * (totalCrit / 100));
+
+    const min = spell.min * 1.1;
+    const max = spell.max * 1.1;
+
+    const minHeal = min + bonusHeal;
+    const maxHeal = max + bonusHeal;
 
     const averageHeal = (minHeal + maxHeal) / 2;
     const averageCritBonus = ((averageHeal / 2) * (totalCrit / 100));
 
-    const manaEfficiency = (averageHeal + averageCritBonus) / spell.mana;
+    const totalAverage = (averageHeal + averageCritBonus);
+    const manaEfficiency = totalAverage / (spell.mana * 0.9);
+    const HPS = totalAverage / Math.max((spell.castTime - 0.5), 1.5);
 
     return {
       rank: spell.rank,
       rankDescription: `Rank ${ spell.rank }`,
-      // 'Min': minHeal,
-      // 'Average': averageHeal,
-      // 'Max': maxHeal,
-      'Base': spell.min,
-      'Healing': bonusHeal,
-      'Crit': averageCritBonus,
-      'ManaEfficiency': manaEfficiency,
+      'Base': min.toFixed(0),
+      'Healing': bonusHeal.toFixed(2),
+      'Crit': averageCritBonus.toFixed(2),
+      'ManaEfficiency': +(manaEfficiency.toFixed(2)),
+      'HPS': HPS.toFixed(2),
+      'PowerRating': ((HPS * manaEfficiency) / 2).toFixed(0),
+      'Total': (min + bonusHeal + averageCritBonus).toFixed(2),
     };
   })
 );

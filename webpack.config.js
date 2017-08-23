@@ -191,7 +191,7 @@ module.exports = {
     hot: !isProduction,
     publicPath: '/legacy-sim',
     open: true,
-    openPage: '/',
+    openPage: 'legacy-sim',
     host: '0.0.0.0',
     disableHostCheck: true,
     stats: {
