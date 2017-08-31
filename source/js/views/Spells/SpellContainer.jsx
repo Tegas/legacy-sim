@@ -30,6 +30,13 @@ export default class SpellContainer extends Component {
           >
             Healing Touch
           </NavLink>
+          <h2>Priest</h2>
+          <NavLink
+            exact
+            to={ routeCodes.GREATER_HEAL }
+          >
+            Greater Heal
+          </NavLink>
         </div>
       </div>
     );

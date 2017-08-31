@@ -9,6 +9,7 @@ import Menu from 'components/Global/Menu';
 import Footer from 'components/Global/Footer';
 import SpellContainer from 'views/Spells/SpellContainer';
 import HealingTouch from 'views/Spells/HealingTouch';
+import GreaterHeal from 'views/Spells/GreaterHeal';
 
 const publicPath = '/';
 
@@ -17,6 +18,7 @@ export const routeCodes = {
   ABOUT: `${ publicPath }about`,
   SPELL: `${ publicPath }spell`,
   HEALING_TOUCH: `${ publicPath }healingTouch`,
+  GREATER_HEAL: `${ publicPath }greaterHeal`,
 };
 
 export default class App extends Component {
@@ -34,6 +36,7 @@ export default class App extends Component {
               <Route exact path={ publicPath } component={ Dashboard } />
               <Route path={ routeCodes.SPELL } component={ SpellContainer } />
               <Route path={ routeCodes.HEALING_TOUCH } component={ HealingTouch } />
+              <Route path={ routeCodes.GREATER_HEAL } component={ GreaterHeal } />
               <Route path={ routeCodes.ABOUT } component={ About } />
               <Route path='*' component={ NotFound } />
             </Switch>
