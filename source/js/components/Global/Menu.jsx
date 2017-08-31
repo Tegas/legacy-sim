@@ -9,21 +9,7 @@ export default class Menu extends Component {
         <div className='row'>
           <div className='top-bar-left'>
             <ul className='dropdown menu' data-dropdown-menu=''>
-              <li className='menu-text'>Yeti Store</li>
-              <li className='has-submenu'>
-                <a href='#'>One</a>
-                <ul className='submenu menu vertical' data-submenu=''>
-                  <li>
-                    <a href='#'>One</a>
-                  </li>
-                  <li>
-                    <a href='#'>Two</a>
-                  </li>
-                  <li>
-                    <a href='#'>Three</a>
-                  </li>
-                </ul>
-              </li>
+              <li className='menu-text'>Legacy Sim</li>
               <li>
                 <NavLink
                   activeClassName='Menu-link--active'
@@ -43,12 +29,6 @@ export default class Menu extends Component {
                   About
                 </NavLink>
               </li>
-            </ul>
-          </div>
-          <div className='top-bar-right'>
-            <ul className='menu'>
-              <li><input placeholder='Search' type='search' /></li>
-              <li><button className='button' type='button'>Search</button></li>
             </ul>
           </div>
         </div>

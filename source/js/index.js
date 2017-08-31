@@ -9,9 +9,6 @@ import rootReducer from 'reducers';
 
 import App from 'views/App';
 
-// Load SCSS
-import '../scss/app.scss';
-
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Creating store

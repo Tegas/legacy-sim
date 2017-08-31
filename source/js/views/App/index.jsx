@@ -6,14 +6,17 @@ import Dashboard from 'views/Dashboard';
 import About from 'views/About';
 import NotFound from 'views/NotFound';
 import Menu from 'components/Global/Menu';
-import DruidContainer from 'views/Druid';
+import Footer from 'components/Global/Footer';
+import SpellContainer from 'views/Spells/SpellContainer';
+import HealingTouch from 'views/Spells/HealingTouch';
 
 const publicPath = '/';
 
 export const routeCodes = {
   DASHBOARD: publicPath,
-  DRUID: `${ publicPath }druid`,
   ABOUT: `${ publicPath }about`,
+  SPELL: `${ publicPath }spell`,
+  HEALING_TOUCH: `${ publicPath }healingTouch`,
 };
 
 export default class App extends Component {
@@ -29,11 +32,13 @@ export default class App extends Component {
           <div className='Page'>
             <Switch>
               <Route exact path={ publicPath } component={ Dashboard } />
-              <Route path={ routeCodes.DRUID } component={ DruidContainer } />
+              <Route path={ routeCodes.SPELL } component={ SpellContainer } />
+              <Route path={ routeCodes.HEALING_TOUCH } component={ HealingTouch } />
               <Route path={ routeCodes.ABOUT } component={ About } />
               <Route path='*' component={ NotFound } />
             </Switch>
           </div>
+          <Footer />
         </div>
       </HashRouter>
     );

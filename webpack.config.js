@@ -119,7 +119,7 @@ if (isProduction) {
     }),
     new ExtractTextPlugin('style-[hash].css'),
     new CopyWebpackPlugin([
-      { from: '../assets/css/pure-nr-min.css', to: 'assets/css/pure-nr-min.css' },
+      { from: '../assets/css/foundation.min.css', to: 'assets/css/foundation.min.css' },
     ])
   );
 
