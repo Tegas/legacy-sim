@@ -10,6 +10,7 @@ import Footer from 'components/Global/Footer';
 import SpellContainer from 'views/Spells/SpellContainer';
 import HealingTouch from 'views/Spells/HealingTouch';
 import Rejuvenation from 'views/Spells/Rejuvenation';
+import Regrowth from 'views/Spells/Regrowth';
 import GreaterHeal from 'views/Spells/GreaterHeal';
 import FlashHeal from 'views/Spells/FlashHeal';
 import Renew from 'views/Spells/Renew';
@@ -23,6 +24,7 @@ export const routeCodes = {
   SPELL: `${ publicPath }spell`,
   HEALING_TOUCH: `${ publicPath }healingTouch`,
   REJUVENATION: `${ publicPath }rejuvenation`,
+  REGROWTH: `${ publicPath }regrowth`,
   GREATER_HEAL: `${ publicPath }greaterHeal`,
   FLASH_HEAL: `${ publicPath }flashHeal`,
   RENEW: `${ publicPath }renew`,
@@ -45,6 +47,7 @@ export default class App extends Component {
               <Route path={ routeCodes.SPELL } component={ SpellContainer } />
               <Route path={ routeCodes.HEALING_TOUCH } component={ HealingTouch } />
               <Route path={ routeCodes.REJUVENATION } component={ Rejuvenation } />
+              <Route path={ routeCodes.REGROWTH } component={ Regrowth } />
               <Route path={ routeCodes.GREATER_HEAL } component={ GreaterHeal } />
               <Route path={ routeCodes.FLASH_HEAL } component={ FlashHeal } />
               <Route path={ routeCodes.RENEW } component={ Renew } />

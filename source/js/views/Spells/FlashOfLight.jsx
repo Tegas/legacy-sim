@@ -68,7 +68,7 @@ class flashHeal extends Component {
   render() {
     return (
       <HealingView
-        spellName='Flash Heal'
+        spellName='Flash Of Light'
         healingTable={ this.generateHealingTable(this.props.formValues) }
       >
         <h3>Character</h3>

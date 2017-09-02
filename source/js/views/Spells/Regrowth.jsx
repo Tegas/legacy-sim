@@ -6,44 +6,48 @@ import _ from 'lodash';
 import HealingView from './HealingView';
 
 const RANKS = [
-  { 'rank': 1, 'mana': 25, 'level': 4, 'castTime': 1.5, 'min': 32, 'max': 32 },
-  { 'rank': 2, 'mana': 40, 'level': 10, 'castTime': 1.5, 'min': 56, 'max': 56 },
-  { 'rank': 3, 'mana': 75, 'level': 16, 'castTime': 1.5, 'min': 116, 'max': 116 },
-  { 'rank': 4, 'mana': 105, 'level': 22, 'castTime': 1.5, 'min': 180, 'max': 180 },
-  { 'rank': 5, 'mana': 135, 'level': 28, 'castTime': 1.5, 'min': 244, 'max': 244 },
-  { 'rank': 6, 'mana': 160, 'level': 34, 'castTime': 1.5, 'min': 304, 'max': 304 },
-  { 'rank': 7, 'mana': 195, 'level': 40, 'castTime': 1.5, 'min': 388, 'max': 388 },
-  { 'rank': 8, 'mana': 235, 'level': 46, 'castTime': 1.5, 'min': 488, 'max': 488 },
-  { 'rank': 9, 'mana': 280, 'level': 52, 'castTime': 1.5, 'min': 608, 'max': 608 },
-  { 'rank': 10, 'mana': 335, 'level': 58, 'castTime': 1.5, 'min': 756, 'max': 756 },
-  { 'rank': 11, 'mana': 360, 'level': 60, 'castTime': 1.5, 'min': 888, 'max': 888 },
+  { 'rank': 1, 'mana': 120, 'level': 12, 'castTime': 2, 'min': 84, 'max': 99, 'hot': 98 },
+  { 'rank': 2, 'mana': 205, 'level': 18, 'castTime': 2, 'min': 164, 'max': 189, 'hot': 175 },
+  { 'rank': 3, 'mana': 280, 'level': 24, 'castTime': 2, 'min': 240, 'max': 275, 'hot': 259 },
+  { 'rank': 4, 'mana': 350, 'level': 30, 'castTime': 2, 'min': 318, 'max': 361, 'hot': 343 },
+  { 'rank': 5, 'mana': 420, 'level': 36, 'castTime': 2, 'min': 405, 'max': 458, 'hot': 427 },
+  { 'rank': 6, 'mana': 510, 'level': 42, 'castTime': 2, 'min': 511, 'max': 576, 'hot': 546 },
+  { 'rank': 7, 'mana': 615, 'level': 48, 'castTime': 2, 'min': 646, 'max': 725, 'hot': 686 },
+  { 'rank': 8, 'mana': 740, 'level': 54, 'castTime': 2, 'min': 809, 'max': 906, 'hot': 861 },
+  { 'rank': 9, 'mana': 880, 'level': 60, 'castTime': 2, 'min': 1003, 'max': 1120, 'hot': 1064 },
 ];
 
-class rejuvenation extends Component {
+class regrowth extends Component {
 
   componentWillMount() {
     this.props.initialize({
       healing: 500,
       crit: 15,
-      improvedRejuvenation: true,
+      improvedRegrowth: true,
       tranquilSpirit: true,
       giftOfNature: true,
     });
   }
 
   getSpellDetails(spell, character, target) {
-    const coefficient = (spell.castTime / 3.5) * (1 - ((20 - Math.min(spell.level, 20)) * 0.0375));
+    // Coefficients https://github.com/elysium-project/server/pull/860
+    const coefficient = 0.325;
+    const hotCoefficient = 0.513;
+    const critFromInt = ((+character.intellect || 0) / 60.0);
+    const totalCrit = Math.min((critFromInt + +character.crit) * (character.improvedRegrowth ? 1.5 : 1.0), 100);
     const manaReduction = (character.moonGlow ? 0.91 : 1.0) * (character.tranquilSpirit ? 0.9 : 1.0);
     const mana = spell.mana * manaReduction;
-    const castTimeReduction = 0.0;
+    const castTimeReduction = (character.naturesGrace ? (0.5 * (totalCrit / 100)) : 0.0);
     const castTime = Math.max((spell.castTime - castTimeReduction), 1.5);
     const bonusHeal = (coefficient * ((+character.healing || 0) + (target.amplifyMagic ? 150 : 0)));
-    const minHeal = (spell.min * (character.improvedRejuvenation ? 1.15 : 1.0) * (character.giftOfNature ? 1.10 : 1.0));
-    const maxHeal = (spell.max * (character.improvedRejuvenation ? 1.15 : 1.0) * (character.giftOfNature ? 1.10 : 1.0));
-    const baseAverage = (minHeal + maxHeal) / 2;
-    const averageHeal = baseAverage + bonusHeal;
-    const averageCritBonus = 0.0;
-    const totalAverage = (averageHeal);
+    const bonusHot = (hotCoefficient * ((+character.healing || 0) + (target.amplifyMagic ? 150 : 0)));
+    const minHeal = (spell.min * (character.giftOfNature ? 1.1 : 1.0));
+    const maxHeal = (spell.max * (character.giftOfNature ? 1.1 : 1.0));
+    const baseHot = (spell.hot * (character.giftOfNature ? 1.1 : 1.0));
+    const baseAverage = ((minHeal + maxHeal) / 2) + baseHot;
+    const averageHeal = baseAverage + bonusHeal + baseHot + bonusHot;
+    const averageCritBonus = (((baseAverage + bonusHeal) / 2) * (totalCrit / 100));
+    const totalAverage = (averageHeal + averageCritBonus);
     const manaEfficiency = totalAverage / mana;
     const healingPerSecond = totalAverage / castTime;
     const manaPerSecond = mana * (1 / castTime);
@@ -74,7 +78,7 @@ class rejuvenation extends Component {
   render() {
     return (
       <HealingView
-        spellName='Rejuvenation'
+        spellName='Regrowth'
         healingTable={ this.generateHealingTable(this.props.formValues) }
       >
         <h3>Character</h3>
@@ -84,13 +88,17 @@ class rejuvenation extends Component {
               <Field name='healing' component='input' type='number' min='0' max='999' />
             </label>
           </div>
-          <div className='large-4 columns' />
+          <div className='large-4 columns'>
+            <label htmlFor='crit'>Crit %
+              <Field name='crit' component='input' type='number' min='0' max='100' />
+            </label>
+          </div>
           <div className='large-4 columns' />
         </div>
         <div className='row'>
           <div className='large-12 columns'>
-            <Field name='improvedRejuvenation' id='improvedRejuvenation' component='input' type='checkbox' />
-            <label htmlFor='improvedRejuvenation'>Improved Rejuv</label> (15% increased healing)
+            <Field name='improvedRegrowth' id='improvedRegrowth' component='input' type='checkbox' />
+            <label htmlFor='improvedRegrowth'>Improved Regrowth</label> (50% improved crit)
           </div>
         </div>
         <div className='row'>
@@ -107,6 +115,12 @@ class rejuvenation extends Component {
         </div>
         <div className='row'>
           <div className='large-12 columns'>
+            <Field name='naturesGrace' id='naturesGrace' component='input' type='checkbox' />
+            <label htmlFor='naturesGrace'>Natures Grace</label> (0.5 reduced cast time after crit)
+          </div>
+        </div>
+        <div className='row'>
+          <div className='large-12 columns'>
             <Field name='moonGlow' id='moonGlow' component='input' type='checkbox' />
             <label htmlFor='moonGlow'>Moonglow</label> (9% reduced mana cost)
           </div>
@@ -118,7 +132,7 @@ class rejuvenation extends Component {
 
 const mapStateToProps = state => {
   return {
-    formValues: getFormValues('rejuvenation')(state),
+    formValues: getFormValues('regrowth')(state),
   };
 };
 
@@ -127,6 +141,6 @@ const mapDispatchToProps = dispatch => ({
   }, dispatch),
 });
 
-rejuvenation.propTypes = propTypes;
+regrowth.propTypes = propTypes;
 
-export default reduxForm({ form: 'rejuvenation' })(connect(mapStateToProps, mapDispatchToProps)(rejuvenation));
+export default reduxForm({ form: 'regrowth' })(connect(mapStateToProps, mapDispatchToProps)(regrowth));

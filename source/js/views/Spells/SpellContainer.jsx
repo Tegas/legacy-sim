@@ -27,6 +27,7 @@ export default class SpellContainer extends Component {
             <h2>Druid</h2>
             <p><NavLink exact to={ routeCodes.HEALING_TOUCH } >Healing Touch</NavLink></p>
             <p><NavLink exact to={ routeCodes.REJUVENATION } >Rejuvenation</NavLink></p>
+            <p><NavLink exact to={ routeCodes.REGROWTH } >Regrowth</NavLink></p>
           </div>
           <div>
             <h2>Paladin</h2>
