@@ -23,20 +23,21 @@ export default class SpellContainer extends Component {
         </div>
         <div className='column row'>
           <h1>Spells</h1>
-          <h2>Druid</h2>
-          <NavLink
-            exact
-            to={ routeCodes.HEALING_TOUCH }
-          >
-            Healing Touch
-          </NavLink>
-          <h2>Priest</h2>
-          <NavLink
-            exact
-            to={ routeCodes.GREATER_HEAL }
-          >
-            Greater Heal
-          </NavLink>
+          <div>
+            <h2>Druid</h2>
+            <p><NavLink exact to={ routeCodes.HEALING_TOUCH } >Healing Touch</NavLink></p>
+            <p><NavLink exact to={ routeCodes.REJUVENATION } >Rejuvenation</NavLink></p>
+          </div>
+          <div>
+            <h2>Paladin</h2>
+            <p><NavLink exact to={ routeCodes.FLASH_OF_LIGHT } >Flash Of Light</NavLink></p>
+          </div>
+          <div>
+            <h2>Priest</h2>
+            <p><NavLink exact to={ routeCodes.FLASH_HEAL }>Flash Heal</NavLink></p>
+            <p><NavLink exact to={ routeCodes.GREATER_HEAL }>Greater Heal</NavLink></p>
+            <p><NavLink exact to={ routeCodes.RENEW }>Renew</NavLink></p>
+          </div>
         </div>
       </div>
     );

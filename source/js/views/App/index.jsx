@@ -9,7 +9,11 @@ import Menu from 'components/Global/Menu';
 import Footer from 'components/Global/Footer';
 import SpellContainer from 'views/Spells/SpellContainer';
 import HealingTouch from 'views/Spells/HealingTouch';
+import Rejuvenation from 'views/Spells/Rejuvenation';
 import GreaterHeal from 'views/Spells/GreaterHeal';
+import FlashHeal from 'views/Spells/FlashHeal';
+import Renew from 'views/Spells/Renew';
+import FlashOfLight from 'views/Spells/FlashOfLight';
 
 const publicPath = '/';
 
@@ -18,7 +22,11 @@ export const routeCodes = {
   ABOUT: `${ publicPath }about`,
   SPELL: `${ publicPath }spell`,
   HEALING_TOUCH: `${ publicPath }healingTouch`,
+  REJUVENATION: `${ publicPath }rejuvenation`,
   GREATER_HEAL: `${ publicPath }greaterHeal`,
+  FLASH_HEAL: `${ publicPath }flashHeal`,
+  RENEW: `${ publicPath }renew`,
+  FLASH_OF_LIGHT: `${ publicPath }flashOfLight`,
 };
 
 export default class App extends Component {
@@ -36,7 +44,11 @@ export default class App extends Component {
               <Route exact path={ publicPath } component={ Dashboard } />
               <Route path={ routeCodes.SPELL } component={ SpellContainer } />
               <Route path={ routeCodes.HEALING_TOUCH } component={ HealingTouch } />
+              <Route path={ routeCodes.REJUVENATION } component={ Rejuvenation } />
               <Route path={ routeCodes.GREATER_HEAL } component={ GreaterHeal } />
+              <Route path={ routeCodes.FLASH_HEAL } component={ FlashHeal } />
+              <Route path={ routeCodes.RENEW } component={ Renew } />
+              <Route path={ routeCodes.FLASH_OF_LIGHT } component={ FlashOfLight } />
               <Route path={ routeCodes.ABOUT } component={ About } />
               <Route path='*' component={ NotFound } />
             </Switch>
