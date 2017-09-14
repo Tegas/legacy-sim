@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Field } from 'redux-form';
 import { NavLink } from 'react-router-dom';
 import {
   ResponsiveContainer,
@@ -23,9 +24,10 @@ const CustomizedLabel = React.createClass({
 });
 
 const healingView = ({
-  spellName,
   healingTable,
   children,
+  spell,
+  talents = [],
 }) => (
   <div>
     <div>
@@ -48,7 +50,7 @@ const healingView = ({
                 Spells
               </NavLink>
             </li>
-            <li><span className='show-for-sr'>Current:</span> {spellName}</li>
+            <li><span className='show-for-sr'>Current:</span> {spell.name}</li>
           </ul>
         </nav>
       </div>
@@ -56,9 +58,11 @@ const healingView = ({
         <div className='medium-8 large-7 columns'>
           <ResponsiveContainer aspect={ 2 } >
             <ComposedChart data={ healingTable } margin={ { top: 10, right: 0, left: 0, bottom: 0 } } >
-              <Bar type='monotone' dataKey='base' stackId='1' stroke='#8884d8' fill='#8884d8' isAnimationActive={ false } />
-              <Bar type='monotone' dataKey='bonus' stackId='1' stroke='#82ca9d' fill='#82ca9d' isAnimationActive={ false } />
-              <Bar type='monotone' dataKey='crit' stackId='1' stroke='#ffc658' fill='#ffc658' isAnimationActive={ false } />
+              {spell.direct && <Bar type='monotone' dataKey='base' stackId='1' stroke='#8884d8' fill='#8884d8' isAnimationActive={ false } />}
+              {spell.direct && <Bar type='monotone' dataKey='bonus' stackId='1' stroke='#82ca9d' fill='#82ca9d' isAnimationActive={ false } />}
+              {spell.direct && <Bar type='monotone' dataKey='crit' stackId='1' stroke='#ffc658' fill='#ffc658' isAnimationActive={ false } />}
+              {spell.hot && <Bar type='monotone' dataKey='hot' stackId='1' stroke='#ccaaee' fill='#ccaaee' isAnimationActive={ false } />}
+              {spell.hot && <Bar type='monotone' dataKey='bonusHot' stackId='1' stroke='#ccddff' fill='#ccddff' isAnimationActive={ false } />}
               <Line dataKey='total' stroke='black' isAnimationActive={ false } label={ <CustomizedLabel /> } />
               <Line dataKey='hps' stroke='green' isAnimationActive={ false } />
               <Line dataKey='efficiency' yAxisId='1' stroke='blue' isAnimationActive={ false } />
@@ -73,6 +77,18 @@ const healingView = ({
         </div>
         <div className='medium-4 large-5 columns'>
           {children}
+          {talents.map(talent => (
+            <div className='row' key={ talent.name }>
+              <div className='large-12 columns'>
+                <Field name={ talent.field } id={ talent.field } component='input' type='checkbox' />
+                <label htmlFor={ talent.field }>
+                  <span data-tooltip aria-haspopup='true' className='has-tip tip-bottom' title={ talent.description }>
+                    { talent.name }
+                  </span>
+                </label>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <div className='column row'>
@@ -81,35 +97,57 @@ const healingView = ({
           <thead>
             <tr>
               <th> Rank </th>
-              <th width='19%' className='text-right'> Base Heal</th>
-              <th width='19%' className='text-right'> Bonus Heal </th>
-              <th width='19%' className='text-right'> Crit Bonus </th>
-              <th width='19%' className='text-right'> HPS </th>
-              <th width='19%' className='text-right'> Efficiency </th>
+              <th width='16%' className='text-right'> Base Heal</th>
+              <th width='16%' className='text-right'> Bonus Heal </th>
+              <th width='16%' className='text-right'> Crit Bonus </th>
+              <th width='16%' className='text-right'> Total </th>
+              <th width='16%' className='text-right'> HPS </th>
+              <th width='16%' className='text-right'> Efficiency </th>
             </tr>
           </thead>
           <tbody>
-            {healingTable.map(spell => (
-              <tr key={ spell.rank }>
-                <td>{spell.rank}</td>
-                <td className='text-right'>{spell.base}</td>
-                <td className='text-right'>{spell.bonus}</td>
-                <td className='text-right'>{spell.crit}</td>
-                <td className='text-right'>{spell.hps}</td>
-                <td className='text-right'>{spell.efficiency}</td>
+            {healingTable.map(rank => (
+              <tr key={ rank.rank }>
+                <td>{rank.rank}</td>
+                <td className='text-right'>
+                  {spell.direct &&
+                    <span>{rank.base}</span>
+                  }
+                  {spell.hot &&
+                    <span>
+                      {spell.direct && <span>+</span>}
+                      <span>{ rank.hot }</span>
+                    </span>
+                  }
+                </td>
+                <td className='text-right'>
+                  {spell.direct &&
+                    <span>{rank.bonus}</span>
+                  }
+                  {spell.hot &&
+                    <span>
+                      {spell.direct && <span>+</span>}
+                      <span>{ rank.bonusHot }</span>
+                    </span>
+                  }
+                </td>
+                <td className='text-right'>{rank.crit}</td>
+                <td className='text-right'>{rank.total}</td>
+                <td className='text-right'>{rank.hps}</td>
+                <td className='text-right'>{rank.efficiency}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <dl>
           <dt>Base Heal</dt>
-          <dd>This is the average base heal of the spell without any bonuses from
-            spellpower (10% from talents are included).</dd>
+          <dd>This is the average base heal of the spell including talents but without
+            any bonuses from spellpower .</dd>
           <dt>Bonus Heal</dt>
           <dd>The additional healing provided by bonus healing gear. (Note that
             bonus healing is not affected by talents)</dd>
           <dt>Crit Bonus</dt>
-          <dd>This is the average bonus provided by crit. ((base + bonus) * 150%)</dd>
+          <dd>This is the average bonus provided by crit.</dd>
           <dt>HPS</dt>
           <dd>Max healing per second.</dd>
           <dt>Efficiency</dt>
