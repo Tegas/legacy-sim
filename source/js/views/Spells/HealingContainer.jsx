@@ -36,9 +36,10 @@ class HealingContainer extends Component {
   }
 
   computeSpellDetails({ modifiedSpell, modifiedRank, modifiedCharacter, target, spell, rank }) {
-    const coefficient = (rank.castTime / 3.5) * (1 - ((20 - Math.min(rank.level, 20)) * 0.0375));
-    const directCoefficient = spell.coefficient || coefficient;
-    const hotCoefficient = spell.hotCoefficient || coefficient;
+    const lowLevelPenalty = (1 - ((20 - Math.min(rank.level, 20)) * 0.0375));
+    const coefficient = (rank.castTime / 3.5) * lowLevelPenalty;
+    const directCoefficient = spell.coefficient ? (spell.coefficient * lowLevelPenalty) : coefficient;
+    const hotCoefficient = spell.hotCoefficient ? (spell.hotCoefficient * lowLevelPenalty) : coefficient;
 
     const totalCrit = Math.min(+modifiedCharacter.crit, 100);
     const mana = modifiedRank.mana;

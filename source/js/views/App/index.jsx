@@ -16,6 +16,9 @@ import GreaterHeal from 'views/Spells/GreaterHeal';
 import FlashHeal from 'views/Spells/FlashHeal';
 import Renew from 'views/Spells/Renew';
 import FlashOfLight from 'views/Spells/FlashOfLight';
+import HolyNova from 'views/Spells/HolyNova';
+import Heal from 'views/Spells/Heal';
+import PrayerOfHealing from 'views/Spells/PrayerOfHealing';
 
 const publicPath = '/';
 
@@ -30,6 +33,9 @@ export const routeCodes = {
   FLASH_HEAL: `${ publicPath }flashHeal`,
   RENEW: `${ publicPath }renew`,
   FLASH_OF_LIGHT: `${ publicPath }flashOfLight`,
+  HEAL: `${ publicPath }heal`,
+  HOLY_NOVA: `${ publicPath }holyNova`,
+  PRAYER_OF_HEALING: `${ publicPath }prayerOfHealing`,
 };
 
 export default class App extends Component {
@@ -53,6 +59,9 @@ export default class App extends Component {
               <Route path={ routeCodes.FLASH_HEAL } component={ FlashHeal } />
               <Route path={ routeCodes.RENEW } component={ Renew } />
               <Route path={ routeCodes.FLASH_OF_LIGHT } component={ FlashOfLight } />
+              <Route path={ routeCodes.HEAL } component={ Heal } />
+              <Route path={ routeCodes.HOLY_NOVA } component={ HolyNova } />
+              <Route path={ routeCodes.PRAYER_OF_HEALING } component={ PrayerOfHealing } />
               <Route path={ routeCodes.ABOUT } component={ About } />
               <Route path='*' component={ NotFound } />
             </Switch>

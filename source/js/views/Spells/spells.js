@@ -1,12 +1,12 @@
 
 export const regrowth = {
   name: 'Regrowth',
-  description: 'heals direct and over time',
+  description: 'Heals a friendly target instantly and over 21 sec.',
   direct: true,
   hot: true,
   // Coefficients https://github.com/elysium-project/server/pull/860
-  coefficient: 0.325,
-  hotCoefficient: 0.513,
+  coefficient: 0.3,
+  hotCoefficient: 0.5,
   ranks: [
     { 'rank': 1, 'mana': 120, 'level': 12, 'castTime': 2, 'min': 84, 'max': 99, 'hot': 98, 'duration': 21 },
     { 'rank': 2, 'mana': 205, 'level': 18, 'castTime': 2, 'min': 164, 'max': 189, 'hot': 175, 'duration': 21 },
@@ -22,7 +22,7 @@ export const regrowth = {
 
 export const healingTouch = {
   name: 'Healing Touch',
-  description: 'heals direct',
+  description: 'Heals a friendly target',
   direct: true,
   hot: false,
   ranks: [
@@ -41,7 +41,7 @@ export const healingTouch = {
 
 export const rejuvenation = {
   name: 'Rejuvenation',
-  description: 'heals over time',
+  description: 'Heals the target over 12 sec.',
   direct: false,
   hot: true,
   ranks: [
@@ -61,7 +61,7 @@ export const rejuvenation = {
 
 export const flashHeal = {
   name: 'Flash Heal',
-  description: 'flash heal',
+  description: 'Heals a friendly target',
   direct: true,
   hot: false,
   ranks: [
@@ -77,7 +77,7 @@ export const flashHeal = {
 
 export const flashOfLight = {
   name: 'Flash Of LIght',
-  description: 'flash of Light',
+  description: 'Heals a friendly target',
   direct: true,
   hot: false,
   ranks: [
@@ -92,7 +92,7 @@ export const flashOfLight = {
 
 export const renew = {
   name: 'Renew',
-  description: 'renew',
+  description: 'Heals the target of damage over 15 sec.',
   direct: false,
   hot: true,
   ranks: [
@@ -111,7 +111,7 @@ export const renew = {
 
 export const greaterHeal = {
   name: 'Greater Heal',
-  description: 'Greater Heal',
+  description: 'A slow casting spell that heals a single target',
   direct: true,
   hot: false,
   ranks: [
@@ -120,5 +120,47 @@ export const greaterHeal = {
   { 'rank': 3, 'mana': 545, 'level': 52, 'castTime': 3, 'min': 1437, 'max': 1610, 'hot': 0 },
   { 'rank': 4, 'mana': 655, 'level': 58, 'castTime': 3, 'min': 1798, 'max': 2007, 'hot': 0 },
   { 'rank': 5, 'mana': 710, 'level': 60, 'castTime': 3, 'min': 1966, 'max': 2195, 'hot': 0 },
+  ],
+};
+
+export const heal = {
+  name: 'Heal',
+  description: 'Heal your target',
+  direct: true,
+  hot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 155, 'level': 16, 'castTime': 3, 'min': 295, 'max': 342, 'hot': 0 },
+  { 'rank': 2, 'mana': 205, 'level': 22, 'castTime': 3, 'min': 429, 'max': 492, 'hot': 0 },
+  { 'rank': 3, 'mana': 255, 'level': 28, 'castTime': 3, 'min': 566, 'max': 643, 'hot': 0 },
+  { 'rank': 4, 'mana': 305, 'level': 34, 'castTime': 3, 'min': 712, 'max': 805, 'hot': 0 },
+  ],
+};
+
+export const holyNova = {
+  name: 'Holy Nova',
+  description: 'Causes an explosion of holy light around the caster, causing Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards. These effects cause no threat.',
+  direct: true,
+  hot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 185, 'level': 20, 'castTime': 1.5, 'min': 52, 'max': 61, 'hot': 0 },
+  { 'rank': 2, 'mana': 290, 'level': 28, 'castTime': 1.5, 'min': 86, 'max': 99, 'hot': 0 },
+  { 'rank': 3, 'mana': 400, 'level': 36, 'castTime': 1.5, 'min': 121, 'max': 140, 'hot': 0 },
+  { 'rank': 4, 'mana': 520, 'level': 44, 'castTime': 1.5, 'min': 161, 'max': 188, 'hot': 0 },
+  { 'rank': 5, 'mana': 635, 'level': 52, 'castTime': 1.5, 'min': 235, 'max': 272, 'hot': 0 },
+  { 'rank': 6, 'mana': 750, 'level': 60, 'castTime': 1.5, 'min': 302, 'max': 351, 'hot': 0 },
+  ],
+};
+
+export const prayerOfHealing = {
+  name: 'Prayer of Healing',
+  description: 'A powerful prayer heals party members within 30 yards.',
+  direct: true,
+  hot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 410, 'level': 30, 'castTime': 3, 'min': 301, 'max': 322, 'hot': 0 },
+  { 'rank': 2, 'mana': 560, 'level': 40, 'castTime': 3, 'min': 444, 'max': 473, 'hot': 0 },
+  { 'rank': 3, 'mana': 770, 'level': 50, 'castTime': 3, 'min': 657, 'max': 696, 'hot': 0 },
+  { 'rank': 4, 'mana': 1030, 'level': 60, 'castTime': 3, 'min': 939, 'max': 992, 'hot': 0 },
+  { 'rank': 5, 'mana': 1070, 'level': 60, 'castTime': 3, 'min': 1041, 'max': 1100, 'hot': 0 },
   ],
 };

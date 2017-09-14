@@ -35,9 +35,12 @@ export default class SpellContainer extends Component {
           </div>
           <div>
             <h2>Priest</h2>
-            <p><NavLink exact to={ routeCodes.FLASH_HEAL }>Flash Heal</NavLink></p>
+            <p><NavLink exact to={ routeCodes.HEAL }>Heal</NavLink></p>
             <p><NavLink exact to={ routeCodes.GREATER_HEAL }>Greater Heal</NavLink></p>
+            <p><NavLink exact to={ routeCodes.FLASH_HEAL }>Flash Heal</NavLink></p>
             <p><NavLink exact to={ routeCodes.RENEW }>Renew</NavLink></p>
+            <p><NavLink exact to={ routeCodes.HOLY_NOVA }>Holy Nova</NavLink></p>
+            <p><NavLink exact to={ routeCodes.PRAYER_OF_HEALING }>Prayer Of Healing</NavLink></p>
           </div>
         </div>
       </div>

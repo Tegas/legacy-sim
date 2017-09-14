@@ -98,3 +98,10 @@ export const spiritualHealing = {
   effect: ({ rank }) => { rank.min *= 1.1; rank.max *= 1.1; rank.hot *= 1.1; },
 };
 
+export const improvedPrayerOfHealing = {
+  field: 'improvedPrayerOfHealing',
+  name: 'Improved Prayer Of Healing',
+  description: 'Improved Prayer Of Healing',
+  effect: ({ rank }) => { rank.mana *= 0.8; },
+};
+
