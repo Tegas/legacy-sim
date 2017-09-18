@@ -21,7 +21,6 @@ class prayerOfHealing extends Component {
       <HealingContainer
         spell={ spells.prayerOfHealing }
         talents={ [
-          talents.divineFury,
           talents.improvedHealing,
           talents.spiritualHealing,
           talents.improvedPrayerOfHealing,

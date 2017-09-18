@@ -147,7 +147,7 @@ const healingView = ({
           <dd>The additional healing provided by bonus healing gear. (Note that
             bonus healing is not affected by talents)</dd>
           <dt>Crit Bonus</dt>
-          <dd>This is the average bonus provided by crit.</dd>
+          <dd>This is the average bonus provided by crit. </dd>
           <dt>HPS</dt>
           <dd>Max healing per second.</dd>
           <dt>Efficiency</dt>
