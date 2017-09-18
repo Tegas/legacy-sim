@@ -164,3 +164,49 @@ export const prayerOfHealing = {
   { 'rank': 5, 'mana': 1070, 'level': 60, 'castTime': 3, 'min': 1041, 'max': 1100, 'hot': 0 },
   ],
 };
+
+export const healingWave = {
+  name: 'Healing Wave',
+  description: 'Heals a friendly target.',
+  direct: true,
+  hot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 25, 'level': 1, 'castTime': 1.5, 'min': 34, 'max': 45, 'hot': 0 },
+  { 'rank': 2, 'mana': 45, 'level': 6, 'castTime': 2, 'min': 64, 'max': 79, 'hot': 0 },
+  { 'rank': 3, 'mana': 80, 'level': 12, 'castTime': 2.5, 'min': 129, 'max': 156, 'hot': 0 },
+  { 'rank': 4, 'mana': 155, 'level': 18, 'castTime': 3, 'min': 268, 'max': 317, 'hot': 0 },
+  { 'rank': 5, 'mana': 200, 'level': 24, 'castTime': 3, 'min': 376, 'max': 441, 'hot': 0 },
+  { 'rank': 6, 'mana': 265, 'level': 32, 'castTime': 3, 'min': 536, 'max': 623, 'hot': 0 },
+  { 'rank': 7, 'mana': 340, 'level': 40, 'castTime': 3, 'min': 740, 'max': 855, 'hot': 0 },
+  { 'rank': 8, 'mana': 440, 'level': 48, 'castTime': 3, 'min': 1017, 'max': 1168, 'hot': 0 },
+  { 'rank': 9, 'mana': 560, 'level': 56, 'castTime': 3, 'min': 1367, 'max': 1562, 'hot': 0 },
+  { 'rank': 10, 'mana': 620, 'level': 60, 'castTime': 3, 'min': 1620, 'max': 1851, 'hot': 0 },
+  ],
+};
+
+export const lesserHealingWave = {
+  name: 'Lesser Healing Wave',
+  description: 'Heals a friendly target.',
+  direct: true,
+  hot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 105, 'level': 20, 'castTime': 1.5, 'min': 162, 'max': 187, 'hot': 0 },
+  { 'rank': 2, 'mana': 145, 'level': 28, 'castTime': 1.5, 'min': 247, 'max': 282, 'hot': 0 },
+  { 'rank': 3, 'mana': 185, 'level': 36, 'castTime': 1.5, 'min': 337, 'max': 382, 'hot': 0 },
+  { 'rank': 4, 'mana': 235, 'level': 44, 'castTime': 1.5, 'min': 458, 'max': 515, 'hot': 0 },
+  { 'rank': 5, 'mana': 305, 'level': 52, 'castTime': 1.5, 'min': 631, 'max': 706, 'hot': 0 },
+  { 'rank': 6, 'mana': 380, 'level': 60, 'castTime': 1.5, 'min': 832, 'max': 929, 'hot': 0 },
+  ],
+};
+
+export const chainHeal = {
+  name: 'Chain Heal',
+  description: 'Heals the friendly target, then jumps to heal additional nearby targets. If cast on a party member, the heal will only jump to other party members. Each jump is 50% as effective as the previous target. Heals 3 total targets.',
+  direct: true,
+  hot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 260, 'level': 40, 'castTime': 2.5, 'min': 320, 'max': 369, 'hot': 0 },
+  { 'rank': 2, 'mana': 315, 'level': 46, 'castTime': 2.5, 'min': 405, 'max': 466, 'hot': 0 },
+  { 'rank': 3, 'mana': 405, 'level': 54, 'castTime': 2.5, 'min': 551, 'max': 630, 'hot': 0 },
+  ],
+};

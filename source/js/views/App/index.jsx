@@ -19,6 +19,9 @@ import FlashOfLight from 'views/Spells/FlashOfLight';
 import HolyNova from 'views/Spells/HolyNova';
 import Heal from 'views/Spells/Heal';
 import PrayerOfHealing from 'views/Spells/PrayerOfHealing';
+import LesserHealingWave from 'views/Spells/LesserHealingWave';
+import HealingWave from 'views/Spells/HealingWave';
+import ChainHeal from 'views/Spells/ChainHeal';
 
 const publicPath = '/';
 
@@ -36,6 +39,9 @@ export const routeCodes = {
   HEAL: `${ publicPath }heal`,
   HOLY_NOVA: `${ publicPath }holyNova`,
   PRAYER_OF_HEALING: `${ publicPath }prayerOfHealing`,
+  LESSER_HEALING_WAVE: `${ publicPath }lesserHealingWave`,
+  HEALING_WAVE: `${ publicPath }healingWave`,
+  CHAIN_HEAL: `${ publicPath }chainHeal`,
 };
 
 export default class App extends Component {
@@ -62,6 +68,9 @@ export default class App extends Component {
               <Route path={ routeCodes.HEAL } component={ Heal } />
               <Route path={ routeCodes.HOLY_NOVA } component={ HolyNova } />
               <Route path={ routeCodes.PRAYER_OF_HEALING } component={ PrayerOfHealing } />
+              <Route path={ routeCodes.LESSER_HEALING_WAVE } component={ LesserHealingWave } />
+              <Route path={ routeCodes.HEALING_WAVE } component={ HealingWave } />
+              <Route path={ routeCodes.CHAIN_HEAL } component={ ChainHeal } />
               <Route path={ routeCodes.ABOUT } component={ About } />
               <Route path='*' component={ NotFound } />
             </Switch>

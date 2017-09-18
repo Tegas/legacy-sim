@@ -3,105 +3,134 @@
 export const improvedRegrowth = {
   field: 'improvedRegrowth',
   name: 'Improved Regrowth',
-  description: 'improved regrowth',
+  description: 'Increases the critical effect chance of your Regrowth spell by 50%.',
   effect: ({ character }) => { character.crit *= 1.5; },
 };
 
 export const giftOfNature = {
   field: 'giftOfNature',
   name: 'Gift of Nature',
-  description: 'gift of nature',
+  description: 'Increases the effect of all healing spells by 10%.',
   effect: ({ rank }) => { rank.min *= 1.1; rank.max *= 1.1; rank.hot *= 1.1; },
 };
 
 export const naturesGrace = {
   field: 'naturesGrace',
-  name: 'Natures Grace',
-  description: 'natures grace',
+  name: 'Nature\'s Grace',
+  description: 'All spell criticals grace you with a blessing of nature, reducing the casting time of your next spell by 0.5 sec.',
   effect: ({ rank, character }) => { rank.castTime -= (0.5 * (character.crit / 100)); },
 };
 
 export const moonglow = {
   field: 'moonglow',
   name: 'Moonglow',
-  description: 'moonglow',
+  description: 'Reduces the Mana cost of your Moonfire, Starfire, Wrath, Healing Touch, Regrowth and Rejuvenation spells by 9%.',
   effect: ({ rank }) => { rank.mana *= 0.91; },
 };
 
 export const tranquilSpirit = {
   field: 'tranquilSpirit',
   name: 'Tranquil Spirit',
-  description: 'tranquilSpirit',
+  description: 'Reduces the mana cost of your Healing Touch and Tranquility spells by 10%.',
   effect: ({ rank }) => { rank.mana *= 0.91; },
 };
 
 export const improvedRejuvenation = {
   field: 'improvedRejuvenation',
   name: 'Improved Rejuvenation',
-  description: 'improvedRejuvenation',
+  description: 'Increases the effect of your Rejuvenation spell by 15%.',
   effect: ({ rank }) => { rank.hot *= 1.15; },
 };
 
 export const improvedHealingTouch = {
   field: 'improvedHealingTouch',
   name: 'Improved Healing Touch',
-  description: 'improved healing touch',
+  description: 'Reduces the cast time of your Healing Touch spell by 0.5 sec.',
   effect: ({ rank }) => { rank.castTime -= 0.5; },
 };
 
 export const healingLight = {
   field: 'healingLight',
   name: 'Healing Light',
-  description: 'Healing Light',
+  description: 'Increases the amount healed by your Holy Light and Flash of Light spells by 12%.',
   effect: ({ rank }) => { rank.min *= 1.12; rank.max *= 1.12; },
 };
 
 export const illumination = {
   field: 'illumination',
   name: 'Illumination',
-  description: 'Illumination',
+  description: 'After getting a critical effect from your Flash of Light, Holy Light, or Holy Shock heal spell, gives you a 100% chance to gain Mana equal to the base cost of the spell.',
   effect: ({ rank, character }) => { rank.mana -= ((character.crit / 100) * rank.mana); },
 };
 
 export const mentalAgility = {
   field: 'mentalAgility',
   name: 'Mental Agility',
-  description: 'Mental Agility',
+  description: 'Reduces the mana cost of your instant cast spells by 10%.',
   effect: ({ rank }) => { rank.mana *= 0.9; },
 };
 
 export const improvedRenew = {
   field: 'improvedRenew',
   name: 'Improved Renew',
-  description: 'Improved Renew',
+  description: 'Increases the amount healed by your Renew spell by 15%.',
   effect: ({ rank }) => { rank.hot *= 1.15; },
 };
 
 export const divineFury = {
   field: 'divineFury',
   name: 'Divine Fury',
-  description: 'Divine Fury',
+  description: 'Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by 0.5 sec.',
   effect: ({ rank }) => { rank.castTime -= 0.5; },
 };
 
 export const improvedHealing = {
   field: 'improvedHealing',
   name: 'Improved Healing',
-  description: 'Improved Healing',
+  description: 'Reduces the Mana cost of your Lesser Heal, Heal, and Greater Heal spells by 15%.',
   effect: ({ rank }) => { rank.mana *= 0.85; },
 };
 
 export const spiritualHealing = {
   field: 'spiritualHealing',
   name: 'Spiritual Healing',
-  description: 'Spiritual Healing',
+  description: 'Increases the amount healed by your healing spells by 10%.',
   effect: ({ rank }) => { rank.min *= 1.1; rank.max *= 1.1; rank.hot *= 1.1; },
 };
 
 export const improvedPrayerOfHealing = {
   field: 'improvedPrayerOfHealing',
   name: 'Improved Prayer Of Healing',
-  description: 'Improved Prayer Of Healing',
+  description: 'Reduces the Mana cost of your Prayer of Healing spell by 20%.',
   effect: ({ rank }) => { rank.mana *= 0.8; },
 };
+
+export const improvedHealingWave = {
+  field: 'improvedHealingWave',
+  name: 'Improved Healing Wave',
+  description: 'Reduces the casting time of your Healing Wave spell by 0.5 sec.',
+  effect: ({ rank }) => { rank.castTime -= 0.5; },
+};
+
+export const tidalFocus = {
+  field: 'tidalFocus',
+  name: 'Tidal Focus',
+  description: 'Reduces the Mana cost of your healing spells by 5%.',
+  effect: ({ rank }) => { rank.mana *= 0.95; },
+};
+
+export const healingWay = {
+  field: 'healingWay',
+  name: 'Healing Way',
+  description: 'Your Healing Wave spells have a 100% chance to increase the effect of subsequent Healing Wave spells on that target by 6% for 15 sec.',
+  effect: ({ rank }) => { rank.min *= 1.06; rank.max *= 1.06; rank.hot *= 1.06; },
+};
+
+export const purification = {
+  field: 'purification',
+  name: 'Purification',
+  description: 'Increases the effectiveness of your healing spells by 10%.',
+  effect: ({ rank }) => { rank.min *= 1.1; rank.max *= 1.1; rank.hot *= 1.1; },
+};
+
 
