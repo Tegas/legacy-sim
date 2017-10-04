@@ -23,8 +23,8 @@ const CustomizedLabel = React.createClass({
   }
 });
 
-const healingView = ({
-  healingTable,
+const casterView = ({
+  damageTable,
   children,
   spell,
   talents = [],
@@ -61,14 +61,14 @@ const healingView = ({
       <div className='row'>
         <div className='medium-8 large-7 columns'>
           <ResponsiveContainer aspect={ 2 } >
-            <ComposedChart data={ healingTable } margin={ { top: 10, right: 0, left: 0, bottom: 0 } } >
+            <ComposedChart data={ damageTable } margin={ { top: 10, right: 0, left: 0, bottom: 0 } } >
               {spell.direct && <Bar type='monotone' dataKey='base' stackId='1' stroke='#8884d8' fill='#8884d8' isAnimationActive={ false } />}
               {spell.direct && <Bar type='monotone' dataKey='bonus' stackId='1' stroke='#82ca9d' fill='#82ca9d' isAnimationActive={ false } />}
               {spell.direct && <Bar type='monotone' dataKey='crit' stackId='1' stroke='#ffc658' fill='#ffc658' isAnimationActive={ false } />}
-              {spell.hot && <Bar type='monotone' dataKey='hot' stackId='1' stroke='#ccaaee' fill='#ccaaee' isAnimationActive={ false } />}
-              {spell.hot && <Bar type='monotone' dataKey='bonusHot' stackId='1' stroke='#ccddff' fill='#ccddff' isAnimationActive={ false } />}
+              {spell.dot && <Bar type='monotone' dataKey='dot' stackId='1' stroke='#ccaaee' fill='#ccaaee' isAnimationActive={ false } />}
+              {spell.dot && <Bar type='monotone' dataKey='bonusHot' stackId='1' stroke='#ccddff' fill='#ccddff' isAnimationActive={ false } />}
               <Line dataKey='total' stroke='black' isAnimationActive={ false } label={ <CustomizedLabel /> } />
-              <Line dataKey='hps' stroke='green' isAnimationActive={ false } />
+              <Line dataKey='dps' stroke='green' isAnimationActive={ false } />
               <Line dataKey='efficiency' yAxisId='1' stroke='blue' isAnimationActive={ false } />
               <XAxis dataKey='rankDescription' />
               <YAxis />
@@ -103,16 +103,16 @@ const healingView = ({
               <th> Rank </th>
               <th width='12%' className='text-right'> Mana</th>
               <th width='12%' className='text-right'> Cast Time</th>
-              <th width='12%' className='text-right'> Base Heal</th>
-              <th width='12%' className='text-right'> Bonus Heal </th>
+              <th width='12%' className='text-right'> Base Damage</th>
+              <th width='12%' className='text-right'> Bonus Damage </th>
               <th width='12%' className='text-right'> Crit Bonus </th>
               <th width='12%' className='text-right'> Total </th>
-              <th width='12%' className='text-right'> HPS </th>
+              <th width='12%' className='text-right'> DPS </th>
               <th width='12%' className='text-right'> Efficiency </th>
             </tr>
           </thead>
           <tbody>
-            {healingTable.map(rank => (
+            {damageTable.map(rank => (
               <tr key={ rank.rank }>
                 <td>{rank.rank}</td>
                 <td className='text-right'>{rank.mana}</td>
@@ -121,10 +121,10 @@ const healingView = ({
                   {spell.direct &&
                     <span>{rank.base}</span>
                   }
-                  {spell.hot &&
+                  {spell.dot &&
                     <span>
                       {spell.direct && <span>+</span>}
-                      <span>{ rank.hot }</span>
+                      <span>{ rank.dot }</span>
                     </span>
                   }
                 </td>
@@ -132,7 +132,7 @@ const healingView = ({
                   {spell.direct &&
                     <span>{rank.bonus}</span>
                   }
-                  {spell.hot &&
+                  {spell.dot &&
                     <span>
                       {spell.direct && <span>+</span>}
                       <span>{ rank.bonusHot }</span>
@@ -141,33 +141,33 @@ const healingView = ({
                 </td>
                 <td className='text-right'>{rank.crit}</td>
                 <td className='text-right'>{rank.total}</td>
-                <td className='text-right'>{rank.hps}</td>
+                <td className='text-right'>{rank.dps}</td>
                 <td className='text-right'>{rank.efficiency}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <dl>
-          <dt>Base Heal</dt>
-          <dd>This is the average base heal of the spell including talents but without
+          <dt>Base Damage</dt>
+          <dd>This is the average base damage of the spell including talents but without
             any bonuses from spellpower .</dd>
-          <dt>Bonus Heal</dt>
-          <dd>The additional healing provided by bonus healing gear. (Note that
-            bonus healing is not affected by talents)</dd>
+          <dt>Bonus Damage</dt>
+          <dd>The additional damage provided by bonus spell power gear. (Note that
+            bonus spell power is affected by talents)</dd>
           <dt>Crit Bonus</dt>
-          <dd>This is the average bonus provided by crit. </dd>
+          <dd>This is the average damage bonus provided by crit. </dd>
           <dt>HPS</dt>
-          <dd>Max healing per second.</dd>
+          <dd>Max damage per second.</dd>
           <dt>Efficiency</dt>
-          <dd>The amount of healing provided by 1 point of mana.</dd>
+          <dd>The amount of damage provided by 1 point of mana.</dd>
         </dl>
       </div>
     </div>
   </div>
 );
 
-healingView.propTypes = {
-  healingTable: PropTypes.arrayOf(PropTypes.any),
+casterView.propTypes = {
+  damageTable: PropTypes.arrayOf(PropTypes.any),
 };
 
-export default healingView;
+export default casterView;

@@ -48,6 +48,10 @@ export default class SpellContainer extends Component {
             <p><NavLink exact to={ routeCodes.HEALING_WAVE }>Healing Wave</NavLink></p>
             <p><NavLink exact to={ routeCodes.CHAIN_HEAL }>Chain Heal</NavLink></p>
           </div>
+          <div>
+            <h2>Warlock</h2>
+            <p><NavLink exact to={ routeCodes.SHADOW_BOLT }>Shadow Bolt</NavLink></p>
+          </div>
         </div>
       </div>
     );

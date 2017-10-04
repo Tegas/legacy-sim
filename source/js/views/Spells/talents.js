@@ -133,4 +133,68 @@ export const purification = {
   effect: ({ rank }) => { rank.min *= 1.1; rank.max *= 1.1; rank.hot *= 1.1; },
 };
 
+export const improvedShadowBolt = {
+  field: 'improvedShadowBolt',
+  name: 'Improved Shadow Bolt',
+  description: 'Your Shadow Bolt critical strikes increase Shadow Damage dealt to the target by 20% until 4 non-periodic damage sources are applied.',
+  effect: ({ rank, character }) => {
+    const bonus = ((((100 - character.crit) / 100) ** 4) * 0.2) + 1;
+    rank.min *= bonus;
+    rank.max *= bonus;
+    rank.hot *= bonus;
+    character.damage *= bonus;
+  },
+};
+
+export const cataclysm = {
+  field: 'cataclysm',
+  name: 'Cataclysm',
+  description: 'Reduce the mana cost of your Destruction spells by 5%.',
+  effect: ({ rank }) => {
+    rank.mana *= 0.95;
+  },
+};
+
+export const bane = {
+  field: 'bane',
+  name: 'Bane',
+  description: 'Reduce the casting time of your Shadow Bolt and Immolate spells by 0.5 sec and your Soul Fire spell by 2.0 sec.',
+  effect: ({ rank }) => {
+    rank.castTime -= 0.5;
+  },
+};
+
+export const shadowMastery = {
+  field: 'shadowMastery',
+  name: 'Shadow Mastery',
+  description: 'Increases the damage dealt or life drained by your shadow spells by 10%.',
+  effect: ({ rank, character }) => {
+    rank.min *= 1.1;
+    rank.max *= 1.1;
+    rank.dot *= 1.1;
+    character.damage *= 1.1;
+  },
+};
+
+export const demonicSacrifice = {
+  field: 'demonicSacrifice',
+  name: 'Demonic Sacrifice',
+  description: 'Increases your shadow damage by 15%.',
+  effect: ({ rank, character }) => {
+    rank.min *= 1.15;
+    rank.max *= 1.15;
+    rank.dot *= 1.15;
+    character.damage *= 1.15;
+  },
+};
+
+export const ruin = {
+  field: 'ruin',
+  name: 'Ruin',
+  description: 'Increases the critical strike damage bonus of your destruction spells by 100%.',
+  effect: ({ spell }) => {
+    spell.critMultiplier = 1.0;
+  },
+};
+
 

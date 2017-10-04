@@ -210,3 +210,22 @@ export const chainHeal = {
   { 'rank': 3, 'mana': 405, 'level': 54, 'castTime': 2.5, 'min': 551, 'max': 630, 'hot': 0 },
   ],
 };
+
+export const shadowBolt = {
+  name: 'Shadow Bolt',
+  description: 'Sends a shadowy bolt at the enemy, causing Shadow damage.',
+  direct: true,
+  dot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 25, 'level': 1, 'castTime': 1.7, 'min': 12, 'max': 17, 'dot': 0 },
+  { 'rank': 2, 'mana': 40, 'level': 6, 'castTime': 2.2, 'min': 23, 'max': 30, 'dot': 0 },
+  { 'rank': 3, 'mana': 70, 'level': 12, 'castTime': 2.8, 'min': 48, 'max': 57, 'dot': 0 },
+  { 'rank': 4, 'mana': 110, 'level': 20, 'castTime': 3, 'min': 86, 'max': 99, 'dot': 0 },
+  { 'rank': 5, 'mana': 160, 'level': 28, 'castTime': 3, 'min': 142, 'max': 163, 'dot': 0 },
+  { 'rank': 6, 'mana': 210, 'level': 36, 'castTime': 3, 'min': 204, 'max': 231, 'dot': 0 },
+  { 'rank': 7, 'mana': 265, 'level': 44, 'castTime': 3, 'min': 281, 'max': 316, 'dot': 0 },
+  { 'rank': 8, 'mana': 315, 'level': 52, 'castTime': 3, 'min': 360, 'max': 403, 'dot': 0 },
+  { 'rank': 9, 'mana': 370, 'level': 60, 'castTime': 3, 'min': 455, 'max': 508, 'dot': 0 },
+  { 'rank': 10, 'mana': 380, 'level': 60, 'castTime': 3, 'min': 482, 'max': 539, 'dot': 0 },
+  ],
+};

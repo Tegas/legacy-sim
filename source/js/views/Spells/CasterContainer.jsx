@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field } from 'redux-form';
 import _ from 'lodash';
-import HealingView from './HealingView';
+import CasterView from './CasterView';
 import '../style.css';
 
-class HealingContainer extends Component {
+class CasterContainer extends Component {
 
   applyTalents({ spell, rank, character, target }, talents) {
     const modifiedSpell = Object.assign({}, spell);
@@ -39,43 +39,43 @@ class HealingContainer extends Component {
     const lowLevelPenalty = (1 - ((20 - Math.min(rank.level, 20)) * 0.0375));
     const coefficient = (Math.min(rank.castTime, 3.5) / 3.5) * lowLevelPenalty;
     const directCoefficient = spell.coefficient ? (spell.coefficient * lowLevelPenalty) : coefficient;
-    const hotCoefficient = spell.hotCoefficient ? (spell.hotCoefficient * lowLevelPenalty) : coefficient;
+    const dotCoefficient = spell.dotCoefficient ? (spell.dotCoefficient * lowLevelPenalty) : coefficient;
 
     const totalCrit = Math.min(+modifiedCharacter.crit, 100);
     const mana = modifiedRank.mana;
     const castTime = Math.max(modifiedRank.castTime, 1.5);
-    const baseHot = (modifiedRank.hot || 0);
-    const bonusHot = spell.hot ? hotCoefficient * +modifiedCharacter.healing : 0.0;
-    const totalHot = baseHot + bonusHot;
+    const baseDot = (modifiedRank.dot || 0);
+    const bonusDot = modifiedSpell.dot ? dotCoefficient * +modifiedCharacter.damage : 0.0;
+    const totalDot = baseDot + bonusDot;
     const baseAverage = ((modifiedRank.min || 0) + (modifiedRank.max || 0)) / 2;
-    const bonusHeal = spell.direct ? directCoefficient * +modifiedCharacter.healing : 0.0;
-    const averageCritBonus = ((baseAverage + bonusHeal) / 2) * (totalCrit / 100);
-    const totalDirect = (baseAverage + bonusHeal + averageCritBonus);
-    const totalAverage = (totalDirect + totalHot);
+    const bonusDamage = modifiedSpell.direct ? directCoefficient * +modifiedCharacter.damage : 0.0;
+    const averageCritBonus = ((baseAverage + bonusDamage) * (modifiedSpell.critMultiplier || 0.5)) * (totalCrit / 100);
+    const totalDirect = (baseAverage + bonusDamage + averageCritBonus);
+    const totalAverage = (totalDirect + totalDot);
     const manaEfficiency = totalAverage / mana;
-    const healingPerSecond = totalAverage / castTime;
+    const damagePerSecond = totalAverage / castTime;
     const manaPerSecond = mana * (1 / castTime);
-    const rating = ((healingPerSecond / 10) + (manaEfficiency * 10)) * 20;
+    const rating = ((damagePerSecond / 10) + (manaEfficiency * 10)) * 20;
 
     return {
       rank: rank.rank,
       rankDescription: `Rank ${ rank.rank }`,
-      mana,
+      mana: mana.toFixed(0),
       mps: manaPerSecond.toFixed(2),
-      castTime,
+      castTime: castTime.toFixed(2),
       base: baseAverage.toFixed(0),
-      hot: modifiedRank.hot.toFixed(0),
-      bonus: bonusHeal.toFixed(2),
-      bonusHot: bonusHot.toFixed(2),
+      dot: modifiedRank.dot.toFixed(0),
+      bonus: bonusDamage.toFixed(2),
+      bonusDot: bonusDot.toFixed(2),
       crit: averageCritBonus.toFixed(2),
       total: totalAverage.toFixed(2),
-      hps: healingPerSecond.toFixed(2),
+      dps: damagePerSecond.toFixed(2),
       efficiency: +(manaEfficiency.toFixed(2)),
       rating,
     };
   }
 
-  generateHealingTable(formValues = {}) {
+  generateDamageTable(formValues = {}) {
     return _.map(this.props.spell.ranks, rank => {
       return this.computeSpellDetails(
         this.applyTalents({
@@ -89,17 +89,17 @@ class HealingContainer extends Component {
 
   render() {
     return (
-      <HealingView
+      <CasterView
         spellName={ this.props.spell.name }
         spell={ this.props.spell }
-        healingTable={ this.generateHealingTable(this.props.formValues) }
+        damageTable={ this.generateDamageTable(this.props.formValues) }
         talents={ this.props.talents }
       >
         <h3>Character</h3>
         <div className='row'>
           <div className='large-4 columns'>
-            <label htmlFor='healing'>Healing
-              <Field name='healing' component='input' type='number' min='0' max='999' />
+            <label htmlFor='damage'>damage
+              <Field name='damage' component='input' type='number' min='0' max='999' />
             </label>
           </div>
           <div className='large-4 columns'>
@@ -109,8 +109,8 @@ class HealingContainer extends Component {
           </div>
           <div className='large-4 columns' />
         </div>
-      </HealingView>
+      </CasterView>
     );
   }
 }
-export default connect()(HealingContainer);
+export default connect()(CasterContainer);
