@@ -23,12 +23,14 @@ import LesserHealingWave from 'views/Spells/LesserHealingWave';
 import HealingWave from 'views/Spells/HealingWave';
 import ChainHeal from 'views/Spells/ChainHeal';
 import ShadowBolt from 'views/Spells/ShadowBolt';
+import ResistancesContainer from 'views/Resistances/ResistancesContainer';
 
 const publicPath = '/';
 
 export const routeCodes = {
   DASHBOARD: publicPath,
   ABOUT: `${ publicPath }about`,
+  RESISTANCES: `${ publicPath }resistances`,
   SPELL: `${ publicPath }spell`,
   HEALING_TOUCH: `${ publicPath }healingTouch`,
   REJUVENATION: `${ publicPath }rejuvenation`,
@@ -59,6 +61,7 @@ export default class App extends Component {
           <div className='Page'>
             <Switch>
               <Route exact path={ publicPath } component={ Dashboard } />
+              <Route path={ routeCodes.RESISTANCES } component={ ResistancesContainer } />
               <Route path={ routeCodes.SPELL } component={ SpellContainer } />
               <Route path={ routeCodes.HEALING_TOUCH } component={ HealingTouch } />
               <Route path={ routeCodes.REJUVENATION } component={ Rejuvenation } />

@@ -8,12 +8,22 @@ export default class Dashboard extends Component {
       <div>
         <div className='column row'>
           <h1>Legayc Sim</h1>
-          <NavLink
-            exact
-            to={ routeCodes.SPELL }
-          >
-            Spells
-          </NavLink>
+          <p>
+            <NavLink
+              exact
+              to={ routeCodes.SPELL }
+            >
+              Spells
+            </NavLink>
+          </p>
+          <p>
+            <NavLink
+              exact
+              to={ routeCodes.RESISTANCES }
+            >
+              Resistances
+            </NavLink>
+          </p>
         </div>
       </div>
     );
