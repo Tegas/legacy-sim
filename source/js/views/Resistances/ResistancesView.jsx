@@ -16,6 +16,7 @@ import { routeCodes } from '../../views/App';
 
 const resistancesView = ({
   resistancesTable,
+  resistances,
 }) => (
   <div>
     <div>
@@ -42,7 +43,7 @@ const resistancesView = ({
           <ResponsiveContainer aspect={ 2 } >
             <ComposedChart data={ resistancesTable } margin={ { top: 10, right: 0, left: 0, bottom: 0 } } >
               <Line dataKey='effectiveHealth' stroke='green' isAnimationActive={ false } dot={ false } />
-              <Line dataKey='reduction' yAxisId='1' stroke='blue' isAnimationActive={ false } dot={ false } />
+              <Line dataKey='reduction %' yAxisId='1' stroke='blue' isAnimationActive={ false } dot={ false } />
               <XAxis dataKey='resistance' />
               <YAxis />
               <YAxis yAxisId='1' orientation='right' />
@@ -54,10 +55,41 @@ const resistancesView = ({
         </div>
         <div className='medium-4 large-5 columns'>
           <div className='row'>
-            <div className='large-12 columns'>
+            <div className='large-6 columns'>
               <label htmlFor='health'>Health
                 <Field name='health' component='input' type='number' min='0' max='25000' />
               </label>
+            </div>
+            <div className='large-6 columns'>
+              <label htmlFor='resistance'>Resistance
+                <Field name='resistance' component='input' type='number' min='0' max='315' />
+              </label>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='column large-12'>
+              <table>
+                <tbody>
+                  <tr>
+                    <tr>
+                      <th>Damage Reduction</th>
+                      <td>{resistances.damageReduction}%</td>
+                    </tr>
+                    <tr>
+                      <th>Effective Health</th>
+                      <td>{resistances.effectiveHealth}</td>
+                    </tr>
+                    <tr>
+                      <th>Value of Stamina</th>
+                      <td>{resistances.valueOfTenHealth}</td>
+                    </tr>
+                    <tr>
+                      <th>Value of Resistance</th>
+                      <td>{resistances.valueofOneResist}</td>
+                    </tr>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -68,6 +100,7 @@ const resistancesView = ({
 
 resistancesView.propTypes = {
   resistancesTable: PropTypes.arrayOf(PropTypes.any),
+  resistances: PropTypes.any,
 };
 
 export default resistancesView;

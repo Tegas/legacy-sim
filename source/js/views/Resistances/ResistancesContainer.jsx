@@ -10,21 +10,43 @@ class ResistancesContainer extends Component {
   componentWillMount() {
     this.props.initialize({
       health: 5000,
+      resistance: 10,
     });
   }
 
   computeResistanceTable() {
     const health = +this.props.formValues.health;
     const resistances = [];
-    for (let resistance = 0; resistance <= 315; resistance++) {
+    for (let resistance = 0; resistance <= 315; resistance += 5) {
       const reduction = (resistance / 315) * 0.75;
       resistances.push({
         resistance,
-        reduction,
-        effectiveHealth: health / (1 - reduction),
+        'reduction %': +(reduction * 100).toFixed(2),
+        effectiveHealth: Math.round(health / (1 - reduction)),
       });
     }
     return resistances;
+  }
+
+  computeResistance() {
+    const resistance = +this.props.formValues.resistance;
+    const baseHealth = +this.props.formValues.health;
+
+    const effectiveHealth = Math.round(baseHealth / (1 - ((resistance / 315) * 0.75)));
+    const damageReduction = ((resistance / 315) * 75).toFixed(2);
+    const effectiveHealthWithTenMoreHealth = Math.round((baseHealth + 10) / (1 - ((resistance / 315) * 0.75)));
+    const effectiveHealthWithOneMoreResistance = Math.round(baseHealth / (1 - (((resistance + 1) / 315) * 0.75)));
+    const valueOfTenHealth = (effectiveHealthWithTenMoreHealth - effectiveHealth).toFixed(2);
+    const valueofOneResist = (effectiveHealthWithOneMoreResistance - effectiveHealth).toFixed(2);
+
+    return {
+      resistance,
+      baseHealth,
+      damageReduction,
+      effectiveHealth,
+      valueOfTenHealth,
+      valueofOneResist,
+    };
   }
 
   render() {
@@ -32,10 +54,15 @@ class ResistancesContainer extends Component {
       <ResistancesView
         formValues={ this.props.formValues }
         resistancesTable={ this.computeResistanceTable() }
+        resistances={ this.computeResistance() }
       />
     );
   }
 }
+
+ResistancesContainer.defaultProps = {
+  formValues: {},
+};
 
 const mapStateToProps = state => {
   return {
