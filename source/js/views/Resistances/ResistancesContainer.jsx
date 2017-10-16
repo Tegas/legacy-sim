@@ -32,18 +32,18 @@ class ResistancesContainer extends Component {
     const resistance = +this.props.formValues.resistance;
     const baseHealth = +this.props.formValues.health;
 
-    const effectiveHealth = Math.round(baseHealth / (1 - ((resistance / 315) * 0.75)));
+    const effectiveHealth = baseHealth / (1 - ((resistance / 315) * 0.75));
     const damageReduction = ((resistance / 315) * 75).toFixed(2);
-    const effectiveHealthWithTenMoreHealth = Math.round((baseHealth + 10) / (1 - ((resistance / 315) * 0.75)));
-    const effectiveHealthWithOneMoreResistance = Math.round(baseHealth / (1 - (((resistance + 1) / 315) * 0.75)));
+    const effectiveHealthWithTenMoreHealth = (baseHealth + 10) / (1 - ((resistance / 315) * 0.75));
+    const effectiveHealthWithOneMoreResistance = baseHealth / (1 - (((resistance + 1) / 315) * 0.75));
     const valueOfTenHealth = (effectiveHealthWithTenMoreHealth - effectiveHealth).toFixed(2);
     const valueofOneResist = (effectiveHealthWithOneMoreResistance - effectiveHealth).toFixed(2);
 
     return {
       resistance,
-      baseHealth,
+      baseHealth: Math.round(baseHealth),
       damageReduction,
-      effectiveHealth,
+      effectiveHealth: Math.round(effectiveHealth),
       valueOfTenHealth,
       valueofOneResist,
     };
