@@ -49,6 +49,13 @@ export const improvedHealingTouch = {
   effect: ({ rank }) => { rank.castTime -= 0.5; },
 };
 
+export const t2Druid8set = {
+  field: 't2Druid8set',
+  name: 'T2 8 Set Bonus',
+  description: 'Increases the duration of your Rejuvenation spell by 3 sec.',
+  effect: ({ rank }) => { rank.duration = 15; rank.hot *= 5/4 },
+};
+
 export const healingLight = {
   field: 'healingLight',
   name: 'Healing Light',
@@ -103,6 +110,13 @@ export const improvedPrayerOfHealing = {
   name: 'Improved Prayer Of Healing',
   description: 'Reduces the Mana cost of your Prayer of Healing spell by 20%.',
   effect: ({ rank }) => { rank.mana *= 0.8; },
+};
+
+export const t2Priest8set = {
+  field: 't2Priest8set',
+  name: 'T2 8 Set Bonus',
+  description: 'Your Greater Heals now have a heal over time component equivalent to a rank 5 renew.',
+  effect: ({ rank, spell }) => { rank.hot = 245; rank.duration = 15, spell.hot = true },
 };
 
 export const improvedHealingWave = {

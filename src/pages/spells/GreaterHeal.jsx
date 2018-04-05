@@ -24,6 +24,8 @@ class greaterHeal extends Component {
           talents.divineFury,
           talents.improvedHealing,
           talents.spiritualHealing,
+          talents.t2Priest8set,
+          talents.improvedRenew,
         ] }
         formValues={ this.props.formValues }
       />

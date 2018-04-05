@@ -27,6 +27,7 @@ class rejuvenation extends Component {
           talents.improvedRejuvenation,
           talents.giftOfNature,
           talents.moonglow,
+          talents.t2Druid8set,
         ] }
         formValues={ this.props.formValues }
       />

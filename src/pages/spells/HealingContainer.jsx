@@ -45,10 +45,10 @@ class HealingContainer extends Component {
     const mana = modifiedRank.mana;
     const castTime = Math.max(modifiedRank.castTime, 1.5);
     const baseHot = (modifiedRank.hot || 0);
-    const bonusHot = spell.hot ? hotCoefficient * +modifiedCharacter.healing : 0.0;
+    const bonusHot = modifiedSpell.hot ? hotCoefficient * +modifiedCharacter.healing : 0.0;
     const totalHot = baseHot + bonusHot;
     const baseAverage = ((modifiedRank.min || 0) + (modifiedRank.max || 0)) / 2;
-    const bonusHeal = spell.direct ? directCoefficient * +modifiedCharacter.healing : 0.0;
+    const bonusHeal = modifiedSpell.direct ? directCoefficient * +modifiedCharacter.healing : 0.0;
     const averageCritBonus = ((baseAverage + bonusHeal) / 2) * (totalCrit / 100);
     const totalDirect = (baseAverage + bonusHeal + averageCritBonus);
     const totalAverage = (totalDirect + totalHot);
