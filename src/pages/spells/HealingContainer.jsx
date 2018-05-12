@@ -70,7 +70,7 @@ class HealingContainer extends Component {
       crit: averageCritBonus.toFixed(2),
       total: totalAverage.toFixed(2),
       hps: healingPerSecond.toFixed(2),
-      efficiency: +(manaEfficiency.toFixed(2)),
+      efficiency: +(manaEfficiency).toFixed(2),
       rating,
     };
   }
@@ -88,10 +88,16 @@ class HealingContainer extends Component {
   }
 
   render() {
+    const { modifiedSpell } = this.applyTalents({
+      spell: this.props.spell,
+      rank: this.props.spell.ranks[0],
+      character: this.props.formValues || {},
+      target: {},
+    }, this.props.talents);
     return (
       <HealingView
-        spellName={ this.props.spell.name }
-        spell={ this.props.spell }
+        spellName={ modifiedSpell.name }
+        spell={ modifiedSpell }
         healingTable={ this.generateHealingTable(this.props.formValues) }
         talents={ this.props.talents }
       >

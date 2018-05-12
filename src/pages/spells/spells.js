@@ -36,6 +36,7 @@ export const healingTouch = {
     { 'rank': 8, 'mana': 495, 'level': 44, 'castTime': 3.5, 'min': 1199, 'max': 1427, hot: 0 },
     { 'rank': 9, 'mana': 600, 'level': 50, 'castTime': 3.5, 'min': 1516, 'max': 1796, hot: 0 },
     { 'rank': 10, 'mana': 720, 'level': 56, 'castTime': 3.5, 'min': 1890, 'max': 2230, hot: 0 },
+    { 'rank': 11, 'mana': 800, 'level': 56, 'castTime': 3.5, 'min': 2267, 'max': 2678, hot: 0 },
   ],
 };
 
