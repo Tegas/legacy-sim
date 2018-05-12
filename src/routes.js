@@ -20,6 +20,7 @@ import ChainHeal from './pages/spells/ChainHeal';
 import ShadowBolt from './pages/spells/ShadowBolt';
 import NotFoundPage from './pages/not-found/NotFoundPage';
 import ResistancesContainer from './pages/resistances/ResistancesContainer';
+import ArmorContainer from './pages/armor/ArmorContainer';
 
 const publicPath = '/';
 
@@ -31,6 +32,7 @@ class Routes extends Component {
               <Route exact path={ publicPath } component={ HomePage } />
               <Route exact path="/home" component={ HomePage } />
               <Route exact path="/resistances" component={ ResistancesContainer } />
+              <Route exact path="/armor" component={ ArmorContainer } />
               <Route exact path="/gear" component={ GearPage } />
               <Route path="/spell" component={ SpellContainer } />
               <Route path="/healing-touch" component={ HealingTouch } />
