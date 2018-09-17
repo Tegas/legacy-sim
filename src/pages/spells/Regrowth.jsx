@@ -28,6 +28,7 @@ class regrowth extends Component {
           talents.giftOfNature,
           talents.moonglow,
           talents.naturesGrace,
+          talents.t3Druid4set,
         ] }
         formValues={ this.props.formValues }
       />

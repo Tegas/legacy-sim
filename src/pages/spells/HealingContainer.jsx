@@ -60,7 +60,7 @@ class HealingContainer extends Component {
     return {
       rank: rank.rank,
       rankDescription: `Rank ${ rank.rank }`,
-      mana,
+      mana: mana.toFixed(2),
       mps: manaPerSecond.toFixed(2),
       castTime,
       base: baseAverage.toFixed(0),
