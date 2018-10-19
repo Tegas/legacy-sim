@@ -81,7 +81,12 @@ export const idolOfLongevity = {
   field: 'idolOfLongevity',
   name: 'Idol of Longevity',
   description: 'Gain up to 25 mana each time you cast Healing touch',
-  effect: ({ rank, character, spell }) => { rank.mana = Math.max(rank.mana - (25 * coefficient), 1); },
+  effect: ({ rank, character, spell }) => {
+    const lowLevelPenalty = (1 - ((20 - Math.min(rank.level, 20)) * 0.0375));
+    const coefficient = (Math.min(rank.castTime, 3.5) / 3.5) * lowLevelPenalty;
+    const directCoefficient = spell.coefficient ? (spell.coefficient * lowLevelPenalty) : coefficient;
+    rank.mana = Math.max(rank.mana - (25 * directCoefficient), 1);
+  },
 };
 
 export const healingLight = {
