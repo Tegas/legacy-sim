@@ -72,6 +72,7 @@ class HealingContainer extends Component {
       hps: healingPerSecond.toFixed(2),
       efficiency: +(manaEfficiency).toFixed(2),
       rating,
+      coefficient,
     };
   }
 

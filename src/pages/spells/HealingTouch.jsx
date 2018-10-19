@@ -31,6 +31,8 @@ class healingTouch extends Component {
           talents.naturesGrace,
           talents.t3Druid4set,
           talents.t3Druid8set,
+          talents.idolOfHealth,
+          talents.idolOfLongevity,
         ] }
         formValues={ this.props.formValues }
       />

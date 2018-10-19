@@ -59,7 +59,7 @@ export const t2Druid8set = {
 export const t3Druid4set = {
   field: 't3Druid4set',
   name: 'T3 4 Set Bonus',
-  description: 'Reduces the ana cost of your Healing Touch, Regrowth, Rejuvenation, and Tranquility spells by 3%',
+  description: 'Reduces the mana cost of your Healing Touch, Regrowth, Rejuvenation, and Tranquility spells by 3%',
   effect: ({ rank, character }) => { rank.mana *= 0.97; },
 };
 
@@ -68,6 +68,20 @@ export const t3Druid8set = {
   name: 'T3 8 Set Bonus',
   description: 'On Healing Touch critical hits, you regain 30% of the mana cost of the spell',
   effect: ({ rank, character }) => { rank.mana -= ((character.crit / 100) * rank.mana * 0.3); },
+};
+
+export const idolOfHealth = {
+  field: 'idolOfHealth',
+  name: 'Idol of Health',
+  description: 'Reduces the casting time of your Healing Touch spell by 0.15 sec.',
+  effect: ({ rank }) => { rank.castTime -= 0.15; },
+};
+
+export const idolOfLongevity = {
+  field: 'idolOfLongevity',
+  name: 'Idol of Longevity',
+  description: 'Gain up to 25 mana each time you cast Healing touch',
+  effect: ({ rank, character, spell }) => { rank.mana = Math.max(rank.mana - (25 * coefficient), 1); },
 };
 
 export const healingLight = {
