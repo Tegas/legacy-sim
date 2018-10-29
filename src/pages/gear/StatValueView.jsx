@@ -10,6 +10,36 @@ const StatValueView = ({
             <div className='row'>
                 <div className='large-3 medium-4 small-6 columns'>
                     <h4>Attributes</h4>
+                    <label htmlFor='Type'>Type
+						<Field name='type' component='select'>
+                            <option value="plate">Plate</option>
+                            <option value="mail">Mail</option>
+                            <option value="leather">Leather</option>
+                            <option value="cloth">Cloth</option>
+                        </Field>
+                    </label>
+                </div>
+                <div className='large-3 medium-4 small-6 columns'>
+                    <h4>Patch</h4>
+                    <label htmlFor='patch'>Patch
+						<Field name='patch' component='select'>
+                            <option value="10">1.12</option>
+                            <option value="9">1.11</option>
+                            <option value="8">1.10</option>
+                            <option value="7">1.09</option>
+                            <option value="6">1.08</option>
+                            <option value="5">1.07</option>
+                            <option value="2">1.04</option>
+                            <option value="3">1.03</option>
+                            <option value="2">1.02</option>
+                        </Field>
+                    </label>
+                </div>
+                <div className='large-4 columns' />
+            </div>
+            <div className='row'>
+                <div className='large-3 medium-4 small-6 columns'>
+                    <h4>Attributes</h4>
                     <label htmlFor='strength'>Strength
 						<Field name='strength' component='input' type='number' />
                     </label>

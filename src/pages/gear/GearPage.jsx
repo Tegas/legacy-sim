@@ -47,7 +47,12 @@ class GearPage extends Component {
 
   _getItems(slot) {
     const formValues = this.props.formValues || {};
-    const slotItems = _.filter(items, (item) => (item.slot === slot));
+    const armorType = formValues.type || 'plate';
+    const patch = +formValues.patch || 12;
+    console.log(items[0]);
+    const slotItems = _.filter(items, (item) => {
+      return item.slot === slot && item.patch <= patch && item.type == armorType;
+    });
     const slotItemValues = _.map(slotItems, (item) => {
       const score = Math.round(
         (item.strength || 0) * +formValues.strength
