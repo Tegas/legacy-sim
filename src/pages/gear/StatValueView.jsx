@@ -24,14 +24,33 @@ const StatValueView = ({
                     <label htmlFor='patch'>Patch
 						<Field name='patch' component='select'>
                             <option value="10">1.12</option>
-                            <option value="9">1.11</option>
-                            <option value="8">1.10</option>
-                            <option value="7">1.09</option>
-                            <option value="6">1.08</option>
-                            <option value="5">1.07</option>
-                            <option value="2">1.04</option>
-                            <option value="3">1.03</option>
-                            <option value="2">1.02</option>
+                            <option value="9">1.11 Naxxramas</option>
+                            <option value="8">1.10 Tier 0.5</option>
+                            <option value="7">1.09 AQ</option>
+                            <option value="6">1.08 Dragons</option>
+                            <option value="5">1.07 Zul'Gurub</option>
+                            <option value="4">1.06 Blackwing Lair</option>
+                            <option value="3">1.05 Alterac Valley</option>
+                            <option value="2">1.04 Item Updates</option>
+                            <option value="1">1.03 Dire Maul</option>
+                            <option value="0">1.02 Molten Core</option>
+                        </Field>
+                    </label>
+                </div>
+                <div className='large-3 medium-4 small-6 columns'>
+                    <h4>Class</h4>
+                    <label htmlFor='class'>Class
+						<Field name='class' component='select'>
+                            <option value=""></option>
+                            <option value="druid">Druid</option>
+                            <option value="hunter">Hunter</option>
+                            <option value="mage">Mage</option>
+                            <option value="paladin">Paladin</option>
+                            <option value="priest">Priest</option>
+                            <option value="rogue">Rogue</option>
+                            <option value="shaman">Shaman</option>
+                            <option value="warlock">Warlock</option>
+                            <option value="warrior">Warrior</option>
                         </Field>
                     </label>
                 </div>
@@ -58,14 +77,14 @@ const StatValueView = ({
                 </div>
                 <div className='large-3 medium-4 small-6 columns'>
                     <h4>Melee</h4>
-                    <label htmlFor='hit'>Hit %
-						<Field name='hit' component='input' type='number' />
+                    <label htmlFor='meleeHit'>Hit %
+						<Field name='meleeHit' component='input' type='number' />
                     </label>
-                    <label htmlFor='crit'>Crit %
-						<Field name='crit' component='input' type='number' />
+                    <label htmlFor='meleeCrit'>Crit %
+						<Field name='meleeCrit' component='input' type='number' />
                     </label>
-                    <label htmlFor='attack'>Attack
-						<Field name='attack' component='input' type='number' />
+                    <label htmlFor='attackPower'>Attack
+						<Field name='attackPower' component='input' type='number' />
                     </label>
                     <label htmlFor='armor'>Armor
 						<Field name='armor' component='input' type='number' />

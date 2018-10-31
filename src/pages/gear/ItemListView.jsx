@@ -32,7 +32,7 @@ const ItemListView = ({
                 {items.map(item => (
                     <tr key={`${item.entry}${item.patch}`}>
                         <td className='text-right'>{item.score}</td>
-                        <td><a href={`https://www.dkpminus.com/vanilla-wow-database/?item=${item.entry}`}>{item.name}</a></td>
+                        <td><a href={`https://classicdb.ch/?item=${item.entry}`}>{item.name}</a></td>
                         <td className='text-right'>{item.strength}</td>
                         <td className='text-right'>{item.agility}</td>
                         <td className='text-right'>{item.intellect}</td>
@@ -47,7 +47,7 @@ const ItemListView = ({
                         <td className='text-right'>{item.mp5}</td>
                         <td className='text-right'>{item.armor}</td>
                         <td className='text-right'>{item.slot}</td>
-                        <td className='text-right'>{item.patch}</td>
+                        <td className='text-right'>{+item.patch + 2}</td>
                     </tr>
                 ))}
             </tbody>

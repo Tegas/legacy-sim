@@ -24,9 +24,9 @@ class GearPage extends Component {
       intellect: 0,
       spirit: 0,
       stamina: 0,
-      hit: 0,
-      crit: 0,
-      attack: 0,
+      meleeHit: 0,
+      meleeCrit: 0,
+      attackPower: 0,
       spellHit: 0,
       spellCrit: 0,
       healing: 0,
@@ -49,9 +49,20 @@ class GearPage extends Component {
     const formValues = this.props.formValues || {};
     const armorType = formValues.type || 'plate';
     const patch = +formValues.patch || 12;
+    const classType = formValues.class;
     console.log(items[0]);
     const slotItems = _.filter(items, (item) => {
-      return item.slot === slot && item.patch <= patch && item.type == armorType;
+      if (classType && item[classType] === 0) {
+        return false;
+      }
+      if (
+        (armorType == 'mail' && item.type == 'plate')
+        || (armorType == 'leather' && (item.type == 'plate' || item.type == 'mail'))
+        || (armorType == 'cloth' && (item.type == 'plate' || item.type == 'mail' || item.type == 'leather'))
+      ) {
+        return false;
+      }
+      return item.slot === slot && item.patch <= patch;
     });
     const slotItemValues = _.map(slotItems, (item) => {
       const score = Math.round(
@@ -60,9 +71,9 @@ class GearPage extends Component {
         + (item.intellect || 0) * +formValues.intellect
         + (item.spirit || 0) * +formValues.spirit
         + (item.stamina || 0) * +formValues.stamina
-        + (item.hit || 0) * +formValues.hit
-        + (item.crit || 0) * +formValues.crit
-        + (item.attack || 0) * +formValues.attack
+        + (item.meleeHit || 0) * +formValues.meleeHit
+        + (item.meleeCrit || 0) * +formValues.meleeCrit
+        + (item.attackPower || 0) * +formValues.attackPower
         + (item.spellHit || 0) * +formValues.spellHit
         + (item.spellCrit || 0) * +formValues.spellCrit
         + (item.healing || 0) * +formValues.healing
@@ -81,7 +92,25 @@ class GearPage extends Component {
         items={this._getItems(this.state.tab.toLowerCase())}
         handleTabClick={this._handleTabClick}
         tab={this.state.tab}
-        tabs={['Head', 'Neck', 'Shoulders', 'Chest', 'Wrist', 'Hands', 'Waist', 'Legs', 'Finger', 'Trinket']}
+        tabs={[
+          'Head',
+          'Neck',
+          'Shoulders',
+          'Chest',
+          'Cloak',
+          'Wrist',
+          'Hands',
+          'Waist',
+          'Legs',
+          'Finger',
+          'Trinket',
+          'Shield',
+          'weapon',
+          'mainHand',
+          'OffHand',
+          'holdable',
+          'weapon2'
+        ]}
         selectedTab={this.state.tab}
       />
     );
