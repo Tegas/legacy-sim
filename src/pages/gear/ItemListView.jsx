@@ -18,19 +18,20 @@ const ItemListView = ({
                     <th className='text-right'> Sta</th>
                     {/* <th className='text-right'> Damage </th> */}
                     {/* <th className='text-right'> Speed </th> */}
-                    <th className='text-right'> Power </th>
-                    <th className='text-right'> Hit </th>
-                    <th className='text-right'> Crit </th>
-                    <th className='text-right'> Healing </th>
-                    <th className='text-right'> Mp5 </th>
-                    <th className='text-right'> Armor </th>
-                    <th className='text-right'> Slot </th>
-                    <th className='text-right'> Patch </th>
+                    <th className='text-right'> Pow</th>
+                    <th className='text-right'> Hit</th>
+                    <th className='text-right'> Crit</th>
+                    <th className='text-right'> Spell</th>
+                    <th className='text-right'> Heal</th>
+                    <th className='text-right'> Mp5</th>
+                    <th className='text-right'> Arm</th>
+                    {/* <th className='text-right'> Slot </th> */}
+                    <th className='text-right'> Patch</th>
                 </tr>
             </thead>
             <tbody>
                 {items.map(item => (
-                    <tr key={`${item.entry}${item.patch}`}>
+                    <tr key={`${item.entry}${item.patch}${item.name}`}>
                         <td className='text-right'>{item.score}</td>
                         <td><a href={`https://classicdb.ch/?item=${item.entry}`}>{item.name}</a></td>
                         <td className='text-right'>{item.strength}</td>
@@ -40,13 +41,14 @@ const ItemListView = ({
                         <td className='text-right'>{item.stamina}</td>
                         {/* <td className='text-right'>{item.dmg_min1}-{item.dmg_max1} {item.dmg_type1}</td> */}
                         {/* <td className='text-right'>{item.speed}</td> */}
-                        <td className='text-right'>{item.attackPower}{item.rangedAttackPower}{item.spellDamage}</td>
+                        <td className='text-right'>{item.attackPower}{item.rangedAttackPower}</td>
                         <td className='text-right'>{item.meleeHit}{item.spellHit}</td>
                         <td className='text-right'>{item.meleeCrit}{item.spellCrit}</td>
+                        <td className='text-right'>{item.spellDamage}</td>
                         <td className='text-right'>{item.healing}</td>
                         <td className='text-right'>{item.mp5}</td>
                         <td className='text-right'>{item.armor}</td>
-                        <td className='text-right'>{item.slot}</td>
+                        {/* <td className='text-right'>{item.slot}</td> */}
                         <td className='text-right'>{+item.patch + 2}</td>
                     </tr>
                 ))}

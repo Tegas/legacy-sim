@@ -102,6 +102,7 @@ class GearPage extends Component {
           'Hands',
           'Waist',
           'Legs',
+          'Feet',
           'Finger',
           'Trinket',
           'Shield',
