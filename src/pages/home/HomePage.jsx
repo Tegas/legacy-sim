@@ -14,6 +14,7 @@ class HomePage extends Component {
             <li><NavLink to="/spell">Spells</NavLink></li>
             <li><NavLink to="/armor">Armor</NavLink></li>
             <li><NavLink to="/resistances">Resistances</NavLink></li>
+            <li><NavLink to="/regen">Mana Regeneration</NavLink></li>
             <li><NavLink to="/gear">Gear</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
           </ul>

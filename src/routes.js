@@ -21,6 +21,7 @@ import ShadowBolt from './pages/spells/ShadowBolt';
 import NotFoundPage from './pages/not-found/NotFoundPage';
 import ResistancesContainer from './pages/resistances/ResistancesContainer';
 import ArmorContainer from './pages/armor/ArmorContainer';
+import RegenContainer from './pages/regen/RegenContainer';
 
 const publicPath = '/';
 
@@ -33,6 +34,7 @@ class Routes extends Component {
               <Route exact path="/home" component={ HomePage } />
               <Route exact path="/resistances" component={ ResistancesContainer } />
               <Route exact path="/armor" component={ ArmorContainer } />
+              <Route exact path="/regen" component={ RegenContainer } />
               <Route exact path="/gear" component={ GearPage } />
               <Route path="/spell" component={ SpellContainer } />
               <Route path="/healing-touch" component={ HealingTouch } />
