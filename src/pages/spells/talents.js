@@ -4,7 +4,7 @@ export const improvedRegrowth = {
   field: 'improvedRegrowth',
   name: 'Improved Regrowth',
   description: 'Increases the critical effect chance of your Regrowth spell by 50%.',
-  effect: ({ character }) => { character.crit *= 1.5; },
+  effect: ({ character }) => { character.crit = Math.min(100, (character.crit + 50)); },
 };
 
 export const giftOfNature = {
