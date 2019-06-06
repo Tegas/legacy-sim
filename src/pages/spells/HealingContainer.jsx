@@ -16,8 +16,10 @@ class HealingContainer extends Component {
     _.forOwn(talents, (value) => {
       if (character[value.field]) {
         value.effect({
-          spell: modifiedSpell,
-          rank: modifiedRank,
+          spell,
+          rank,
+          modifiedSpell: modifiedSpell,
+          modifiedRank: modifiedRank,
           character: modifiedCharacter,
           target: modifiedTarget,
         });
