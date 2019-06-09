@@ -41,14 +41,20 @@ class HealingContainer extends Component {
     const lowLevelPenalty = (1 - ((20 - Math.min(rank.level, 20)) * 0.0375));
     const coefficient = (Math.min(rank.castTime, 3.5) / 3.5) * lowLevelPenalty;
     const directCoefficient = spell.coefficient ? (spell.coefficient * lowLevelPenalty) : coefficient;
-    const hotCoefficient = spell.hotCoefficient ? (spell.hotCoefficient * lowLevelPenalty) : Math.min(((modifiedRank.duration || 15) / 15), 1) * lowLevelPenalty;
+    const hotCoefficient = spell.hotCoefficient ? (spell.hotCoefficient * lowLevelPenalty) : Math.min(((rank.duration || 15) / 15), 1) * lowLevelPenalty;
 
     const totalCrit = Math.min(+modifiedCharacter.crit, 100);
     const mana = modifiedRank.mana;
     const castTime = Math.max(modifiedRank.castTime, 1.5);
-    const baseHot = (modifiedRank.hot || 0);
+    const numberOfTicks = rank.duration / 3.0;
+    const modifiedNumberOfTicks = modifiedRank.duration / 3.0;
     const bonusHot = modifiedSpell.hot ? hotCoefficient * +modifiedCharacter.healing : 0.0;
-    const totalHot = baseHot + bonusHot;
+    const baseHotTick  = Math.floor(modifiedRank.hotTick || 0);
+    const bonusHotTick = Math.floor(bonusHot / numberOfTicks);
+    const totalBaseHot = baseHotTick * modifiedNumberOfTicks;
+    const totalBonusHot = bonusHotTick * modifiedNumberOfTicks;
+    const totalHot = totalBaseHot + totalBonusHot;
+    const hotTick = totalHot / modifiedNumberOfTicks;
     const baseAverage = ((modifiedRank.min || 0) + (modifiedRank.max || 0)) / 2;
     const bonusHeal = modifiedSpell.direct ? directCoefficient * +modifiedCharacter.healing : 0.0;
     const averageCritBonus = ((baseAverage + bonusHeal) / 2) * (totalCrit / 100);
@@ -59,6 +65,8 @@ class HealingContainer extends Component {
     const manaPerSecond = mana * (1 / castTime);
     const rating = ((healingPerSecond / 10) + (manaEfficiency * 10)) * 20;
 
+    console.log({ modifiedRank });
+
     return {
       rank: rank.rank,
       rankDescription: `Rank ${ rank.rank }`,
@@ -66,9 +74,10 @@ class HealingContainer extends Component {
       mps: manaPerSecond.toFixed(2),
       castTime,
       base: baseAverage.toFixed(2),
-      hot: modifiedRank.hot.toFixed(2),
+      hot: totalBaseHot,
+      hotTick,
       bonus: bonusHeal.toFixed(2),
-      bonusHot: bonusHot.toFixed(2),
+      bonusHot: totalBonusHot,
       crit: averageCritBonus.toFixed(2),
       total: totalAverage.toFixed(2),
       hps: healingPerSecond.toFixed(2),
@@ -108,7 +117,7 @@ class HealingContainer extends Component {
         <div className='row'>
           <div className='large-4 columns'>
             <label htmlFor='healing'>Healing
-              <Field name='healing' component='input' type='number' min='0' max='999' />
+              <Field name='healing' component='input' type='number' min='0' max='9999' />
             </label>
           </div>
           <div className='large-4 columns'>

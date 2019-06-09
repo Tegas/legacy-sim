@@ -100,12 +100,15 @@ const healingView = ({
           <thead>
             <tr>
               <th> Rank </th>
-              <th width='12%' className='text-right'> Mana</th>
-              <th width='12%' className='text-right'> Cast Time</th>
-              <th width='12%' className='text-right'> Base Heal</th>
-              <th width='12%' className='text-right'> Bonus Heal </th>
-              <th width='12%' className='text-right'> Crit Bonus </th>
-              <th width='12%' className='text-right'> Total </th>
+              <th width='8%' className='text-right'> Mana</th>
+              <th width='8%' className='text-right'> Cast Time</th>
+              <th width='14%' className='text-right'> Base Heal</th>
+              <th width='14%' className='text-right'> Bonus Heal </th>
+              <th width='14%' className='text-right'> Crit Bonus </th>
+              <th width='14%' className='text-right'> Total </th>
+              {spell.hot &&
+                <th width='8%' className='text-right'> Tick </th>
+              }
               <th width='12%' className='text-right'> HPS </th>
               <th width='12%' className='text-right'> Efficiency </th>
             </tr>
@@ -140,6 +143,9 @@ const healingView = ({
                 </td>
                 <td className='text-right'>{rank.crit}</td>
                 <td className='text-right'>{rank.total}</td>
+                {spell.hot &&
+                  <td className='text-right'>{rank.hotTick}</td>
+                }
                 <td className='text-right'>{rank.hps}</td>
                 <td className='text-right'>{rank.efficiency}</td>
               </tr>

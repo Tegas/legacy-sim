@@ -4,7 +4,7 @@ export const improvedRegrowth = {
   field: 'improvedRegrowth',
   name: 'Improved Regrowth',
   description: 'Increases the critical effect chance of your Regrowth spell by 50%.',
-  effect: ({ character }) => { character.crit = Math.min(100, (character.crit + 50)); },
+  effect: ({ character }) => { character.crit = Math.min(100, (+character.crit + 50)); },
 };
 
 export const giftOfNature = {
@@ -13,8 +13,8 @@ export const giftOfNature = {
   description: 'Increases the effect of all healing spells by 10%.',
   effect: ({ modifiedRank, rank }) => {
     modifiedRank.min += rank.min * 0.1;
-    modifiedRank.max += rank.max * 0.1;
-    modifiedRank.hot += rank.hot * 0.1;
+    modifiedRank.max += rank.max * 0.1;;
+    modifiedRank.hotTick += rank.hotTick * 0.1;;
   },
 };
 
@@ -43,7 +43,7 @@ export const improvedRejuvenation = {
   field: 'improvedRejuvenation',
   name: 'Improved Rejuvenation',
   description: 'Increases the effect of your Rejuvenation spell by 15%.',
-  effect: ({ modifiedRank, rank }) => { modifiedRank.hot += rank.hot * 0.15; },
+  effect: ({ modifiedRank, rank }) => { modifiedRank.hotTick += rank.hotTick * 0.15; },
 };
 
 export const improvedHealingTouch = {
@@ -57,7 +57,7 @@ export const t2Druid8set = {
   field: 't2Druid8set',
   name: 'T2 8 Set Bonus',
   description: 'Increases the duration of your Rejuvenation spell by 3 sec.',
-  effect: ({ modifiedRank }) => { modifiedRank.duration = 15; modifiedRank.hot *= 5/4 },
+  effect: ({ modifiedRank }) => { modifiedRank.duration = 15; },
 };
 
 export const t3Druid4set = {
@@ -118,7 +118,7 @@ export const improvedRenew = {
   field: 'improvedRenew',
   name: 'Improved Renew',
   description: 'Increases the amount healed by your Renew spell by 15%.',
-  effect: ({ modifiedRank, rank }) => { modifiedRank.hot +=  rank.hot * 0.15; },
+  effect: ({ modifiedRank, rank }) => { modifiedRank.hotTick +=  rank.hotTick * 0.15; },
 };
 
 export const divineFury = {
@@ -142,7 +142,7 @@ export const spiritualHealing = {
   effect: ({ modifiedRank, rank }) => {
     modifiedRank.min += rank.min * 0.1;
     modifiedRank.max += rank.max * 0.1;
-    modifiedRank.hot += rank.hot * 0.1;
+    modifiedRank.hotTick += rank.hotTick * 0.1;
   },
 };
 
@@ -157,7 +157,7 @@ export const t2Priest8set = {
   field: 't2Priest8set',
   name: 'T2 8 Set Bonus',
   description: 'Your Greater Heals now have a heal over time component equivalent to a rank 5 renew.',
-  effect: ({ modifiedRank, modifiedSpell }) => { modifiedRank.hot = 245; modifiedRank.duration = 15; modifiedSpell.hot = true; },
+  effect: ({ modifiedRank, modifiedSpell }) => { modifiedRank.hotTick = 245/5; modifiedRank.duration = 15; modifiedSpell.hotTick = true; },
 };
 
 export const improvedHealingWave = {
@@ -181,7 +181,7 @@ export const healingWay = {
   effect: ({ modifiedRank, rank }) => {
     modifiedRank.min += rank.min * 0.06;
     modifiedRank.max += rank.max * 0.06;
-    modifiedRank.hot += rank.hot * 0.06;
+    modifiedRank.hotTick += rank.hotTick * 0.06;
   },
 };
 
@@ -192,7 +192,7 @@ export const purification = {
   effect: ({ modifiedRank, rank }) => {
     modifiedRank.min += rank.min * 0.1;
     modifiedRank.max += rank.max * 0.1;
-    modifiedRank.hot += rank.hot * 0.1;
+    modifiedRank.hotTick += rank.hotTick * 0.1;
   },
 };
 
@@ -204,7 +204,7 @@ export const improvedShadowBolt = {
     const bonus = ((((100 - character.crit) / 100) ** 4) * 0.2) + 1;
     modifiedRank.min *= bonus;
     modifiedRank.max *= bonus;
-    modifiedRank.hot *= bonus;
+    modifiedRank.hotTick *= bonus;
     character.damage *= bonus;
   },
 };
