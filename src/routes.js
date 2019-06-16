@@ -11,6 +11,7 @@ import GreaterHeal from './pages/spells/GreaterHeal';
 import FlashHeal from './pages/spells/FlashHeal';
 import Renew from './pages/spells/Renew';
 import FlashOfLight from './pages/spells/FlashOfLight';
+import HolyLight from './pages/spells/HolyLight';
 import HolyNova from './pages/spells/HolyNova';
 import Heal from './pages/spells/Heal';
 import PrayerOfHealing from './pages/spells/PrayerOfHealing';
@@ -44,6 +45,7 @@ class Routes extends Component {
               <Route path="/flash-heal" component={ FlashHeal } />
               <Route path="/renew" component={ Renew } />
               <Route path="/flash-of-light" component={ FlashOfLight } />
+              <Route path="/holy-light" component={ HolyLight } />
               <Route path="/heal" component={ Heal } />
               <Route path="/holy-nova" component={ HolyNova } />
               <Route path="/prayer-of-healing" component={ PrayerOfHealing } />

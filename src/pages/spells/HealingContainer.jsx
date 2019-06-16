@@ -53,7 +53,7 @@ class HealingContainer extends Component {
     const bonusHotTick = Math.floor(bonusHot / numberOfTicks);
     const totalBaseHot = baseHotTick * modifiedNumberOfTicks;
     const totalBonusHot = bonusHotTick * modifiedNumberOfTicks;
-    const totalHot = totalBaseHot + totalBonusHot;
+    const totalHot = totalBaseHot + totalBonusHot || 0.0;
     const hotTick = totalHot / modifiedNumberOfTicks;
     const baseAverage = ((modifiedRank.min || 0) + (modifiedRank.max || 0)) / 2;
     const bonusHeal = modifiedSpell.direct ? directCoefficient * +modifiedCharacter.healing : 0.0;
@@ -64,8 +64,6 @@ class HealingContainer extends Component {
     const healingPerSecond = totalAverage / castTime;
     const manaPerSecond = mana * (1 / castTime);
     const rating = ((healingPerSecond / 10) + (manaEfficiency * 10)) * 20;
-
-    console.log({ modifiedRank });
 
     return {
       rank: rank.rank,

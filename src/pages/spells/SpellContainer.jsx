@@ -31,6 +31,7 @@ export default class SpellContainer extends Component {
           <div>
             <h2>Paladin</h2>
             <p><NavLink exact to="flash-of-light" >Flash Of Light</NavLink></p>
+            <p><NavLink exact to="holy-light" >Holy Light</NavLink></p>
           </div>
           <div>
             <h2>Priest</h2>

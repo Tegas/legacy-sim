@@ -77,7 +77,7 @@ export const flashHeal = {
 };
 
 export const flashOfLight = {
-  name: 'Flash Of LIght',
+  name: 'Flash Of Light',
   description: 'Heals a friendly target',
   direct: true,
   hot: false,
@@ -88,6 +88,24 @@ export const flashOfLight = {
   { 'rank': 4, 'mana': 90, 'level': 42, 'castTime': 1.5, 'min': 197, 'max': 222, 'hotTick': 0 },
   { 'rank': 5, 'mana': 115, 'level': 50, 'castTime': 1.5, 'min': 267, 'max': 300, 'hotTick': 0 },
   { 'rank': 6, 'mana': 140, 'level': 58, 'castTime': 1.5, 'min': 343, 'max': 384, 'hotTick': 0 },
+  ],
+};
+
+export const holyLight = {
+  name: 'Holy Light',
+  description: 'Heals a friendly target',
+  direct: true,
+  hot: false,
+  ranks: [
+  { 'rank': 1, 'mana': 35, 'level': 1, 'castTime': 2.5, 'min': 39, 'max': 48, 'hotTick': 0 },
+  { 'rank': 2, 'mana': 60, 'level': 6, 'castTime': 2.5, 'min': 76, 'max': 91, 'hotTick': 0 },
+  { 'rank': 3, 'mana': 110, 'level': 14, 'castTime': 2.5, 'min': 159, 'max': 188, 'hotTick': 0 },
+  { 'rank': 4, 'mana': 190, 'level': 22, 'castTime': 2.5, 'min': 310, 'max': 357, 'hotTick': 0 },
+  { 'rank': 5, 'mana': 275, 'level': 30, 'castTime': 2.5, 'min': 491, 'max': 554, 'hotTick': 0 },
+  { 'rank': 6, 'mana': 365, 'level': 38, 'castTime': 2.5, 'min': 698, 'max': 781, 'hotTick': 0 },
+  { 'rank': 7, 'mana': 465, 'level': 46, 'castTime': 2.5, 'min': 945, 'max': 1054, 'hotTick': 0 },
+  { 'rank': 8, 'mana': 580, 'level': 54, 'castTime': 2.5, 'min': 1246, 'max': 1389, 'hotTick': 0 },
+  { 'rank': 9, 'mana': 660, 'level': 60, 'castTime': 2.5, 'min': 1590, 'max': 1771, 'hotTick': 0 },
   ],
 };
 
