@@ -3,6 +3,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import AboutPage from './pages/about/AboutPage';
 import HomePage from './pages/home/HomePage';
 import GearPage from './pages/gear/GearPage';
+import WeaponPage from './pages/weapon/WeaponPage';
 import SpellContainer from './pages/spells/SpellContainer';
 import HealingTouch from './pages/spells/HealingTouch';
 import Rejuvenation from './pages/spells/Rejuvenation';
@@ -37,6 +38,7 @@ class Routes extends Component {
               <Route exact path="/armor" component={ ArmorContainer } />
               <Route exact path="/regen" component={ RegenContainer } />
               <Route exact path="/gear" component={ GearPage } />
+              <Route exact path="/weapon" component={ WeaponPage } />
               <Route path="/spell" component={ SpellContainer } />
               <Route path="/healing-touch" component={ HealingTouch } />
               <Route path="/rejuvenation" component={ Rejuvenation } />

@@ -12,6 +12,8 @@ const ItemListView = ({
                 <tr>
                     <th> Score </th>
                     <th> Item </th>
+                    <th> Damage </th>
+                    <th> Speed </th>
                     {(columns.strength) && <th className='text-right'> Str</th>}
                     {(columns.agility) && <th className='text-right'> Agi</th>}
                     {(columns.intellect) && <th className='text-right'> Int</th>}
@@ -36,6 +38,8 @@ const ItemListView = ({
                     <tr key={`${item.entry}${item.patch}${item.name}`}>
                         <td className='text-right'>{item.score}</td>
                         <td><a href={`https://classicdb.ch/?item=${item.entry}`}>{item.name}</a></td>
+                        <td>{item.dmg_min1}-{item.dmg_max1} {item.dmg_type1}</td>
+                        <td>{item.speed}</td>
                         {(columns.strength) && <td className='text-right'>{item.strength}</td>}
                         {(columns.agility) && <td className='text-right'>{item.agility}</td>}
                         {(columns.intellect) && <td className='text-right'>{item.intellect}</td>}

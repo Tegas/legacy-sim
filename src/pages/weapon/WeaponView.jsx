@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import StatValueView from './StatValueView';
 import ItemListView from './ItemListView';
 
-const GearView = ({
+const WeaponView = ({
 	items,
 	handleTabClick,
 	tabs,
@@ -17,12 +17,12 @@ const GearView = ({
 				<nav aria-label='You are here:'>
 					<ul className='breadcrumbs'>
 						<li><NavLink to="/">Home</NavLink></li>
-						<li><span className='show-for-sr'>Current:</span> Gear</li>
+						<li><span className='show-for-sr'>Current:</span> Weapons</li>
 					</ul>
 				</nav>
 			</div>
 			<div className='row'>
-				<h3>Gear</h3>
+				<h3>Weapons</h3>
 			</div>
 			<StatValueView />
 			<div className="row">
@@ -42,8 +42,8 @@ const GearView = ({
 		</div>
 	);
 
-GearView.propTypes = {
+WeaponView.propTypes = {
 	items: PropTypes.array,
 };
 
-export default GearView;
+export default WeaponView;

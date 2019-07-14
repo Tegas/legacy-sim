@@ -3,15 +3,27 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, propTypes, getFormValues } from 'redux-form';
-import GearView from './GearView';
+import WeaponView from './WeaponView';
 import items from '../../assets/data/items';
 
-class GearPage extends Component {
+const weaponProficiencies = {
+  'druid': ['dagger', 'mace', 'mace2', 'staff', 'fist', 'misc'],
+  'hunter': ['sword', 'dagger','axe', 'sword2', 'axe2', 'polearm', 'staff', 'bow', 'crossbow', 'gun', 'thrown', 'fist', 'misc'],
+  'mage': ['sword', 'dagger', 'staff', 'wand', 'misc'],
+  'priest': ['dagger', 'mace', 'staff', 'wand', 'misc'],
+  'rogue': ['sword', 'dagger', 'mace', 'bow', 'crossbow', 'gun', 'thrown', 'fist', 'misc'],
+  'shaman': ['dagger','axe','mace', 'mace2', 'axe2', 'staff', 'misc', 'shield'],
+  'warlock': ['sword', 'dagger', 'staff', 'wand', 'misc'],
+  'warrior': ['sword', 'dagger','axe','mace', 'sword2', 'mace2', 'axe2', 'polearm', 'staff', 'bow', 'crossbow', 'gun', 'thrown', 'fist', 'misc', 'shield'],
+  'paladin': ['sword', 'axe','mace', 'sword2', 'mace2', 'axe2', 'polearm', 'misc', 'shield'],
+}
+
+class WeaponPage extends Component {
 
   constructor() {
     super();
     this.state = {
-      tab: 'Head',
+      tab: '1-hand',
     };
     this._handleTabClick = this._handleTabClick.bind(this);
     this._getItems = this._getItems.bind(this);
@@ -52,11 +64,8 @@ class GearPage extends Component {
       if (classType && item[classType] === 0) {
         return false;
       }
-      if (
-        ((classType == 'shaman' || classType == 'hunter') && item.type == 'plate')
-        || ((classType == 'rogue' || classType == 'druid') && (item.type == 'plate' || item.type == 'mail'))
-        || ((classType == 'priest' || classType == 'mage' || classType == 'warlock') && (item.type == 'plate' || item.type == 'mail' || item.type == 'leather'))
-      ) {
+
+      if (classType && weaponProficiencies[classType].indexOf(item.type) === -1) {
         return false;
       }
       return item.slot === slot && item.patch <= patch;
@@ -109,23 +118,17 @@ class GearPage extends Component {
 
   render() {
     return (
-      <GearView
+      <WeaponView
         items={this._getItems(this.state.tab.toLowerCase())}
         handleTabClick={this._handleTabClick}
         tab={this.state.tab}
         tabs={[
-          'Head',
-          'Neck',
-          'Shoulders',
-          'Chest',
-          'Cloak',
-          'Wrist',
-          'Hands',
-          'Waist',
-          'Legs',
-          'Feet',
-          'Finger',
-          'Trinket',
+          '1-hand',
+          'main-hand',
+          '2-hand',
+          'Shield',
+          'off-hand',
+          'ranged',
         ]}
         selectedTab={this.state.tab}
         columns={this._getColumns()}
@@ -134,13 +137,13 @@ class GearPage extends Component {
   }
 }
 
-GearPage.defaultProps = {
+WeaponPage.defaultProps = {
   items: []
 };
 
 const mapStateToProps = state => {
   return {
-    formValues: getFormValues('GearPage')(state),
+    formValues: getFormValues('WeaponPage')(state),
   };
 };
 
@@ -149,6 +152,6 @@ const mapDispatchToProps = dispatch => ({
   }, dispatch),
 });
 
-GearPage.propTypes = propTypes;
+WeaponPage.propTypes = propTypes;
 
-export default reduxForm({ form: 'GearPage' })(connect(mapStateToProps, mapDispatchToProps)(GearPage));
+export default reduxForm({ form: 'WeaponPage' })(connect(mapStateToProps, mapDispatchToProps)(WeaponPage));
