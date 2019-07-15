@@ -37,7 +37,7 @@ class CombatTableContainer extends Component {
     
     
     const defense = targetLevel * 5;
-    const baseWeaponSkill = attackerLevel * 5;
+    const baseWeaponSkill = Math.min(300, skill);
 
     if (baseWeaponSkill - defense < 0) {
       critChance = crit + (baseWeaponSkill - defense) * 0.2;
@@ -68,11 +68,11 @@ class CombatTableContainer extends Component {
     const highend = Math.max(Math.min(1.2 - 0.03*(defense - skill), 0.99), 0.2);
     const glancingPenalty = (1 - ((lowend + highend) / 2)) * 100;
 
+    parryChance = behind ? 0.0 : Math.max(5.0 + ((defense - skill) * 0.6), 0);
+
     hitChance = 100 - dodgeChance - missChance - parryChance - glancingChance;
     critChance = Math.max(Math.min(hitChance, critChance), 0);
     hitChance = hitChance - critChance;
-
-    parryChance = behind ? 0.0 : Math.max(5.0 + ((defense - skill) * 0.6), 0);
 
     const overall = +hitChance + (2.0 * critChance) + (glancingChance * (1 - (glancingPenalty / 100)));
 
