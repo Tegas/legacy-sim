@@ -32,7 +32,7 @@ class CombatTableContainer extends Component {
     let critChance = 0.0;
     let dodgeChance = 0.0;
     let missChance = 3.0;
-    let parryChance = behind ? 0 : 14.0;
+    let parryChance = 14.0;
     let glancingChance = 0.0;
     
     
@@ -72,7 +72,9 @@ class CombatTableContainer extends Component {
     critChance = Math.max(Math.min(hitChance, critChance), 0);
     hitChance = hitChance - critChance;
 
-    const overall = +hitChance + (2 * crit) + (glancingChance * (1 - (glancingPenalty / 100)));
+    parryChance = behind ? 0.0 : Math.max(5.0 + ((defense - skill) * 0.6), 0);
+
+    const overall = +hitChance + (2.0 * critChance) + (glancingChance * (1 - (glancingPenalty / 100)));
 
     return {
       hitChance: hitChance.toFixed(2),
