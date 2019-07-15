@@ -23,6 +23,7 @@ class prayerOfHealing extends Component {
         talents={ [
           talents.spiritualHealing,
           talents.improvedPrayerOfHealing,
+          talents.amplifyMagic,
         ] }
         formValues={ this.props.formValues }
       />

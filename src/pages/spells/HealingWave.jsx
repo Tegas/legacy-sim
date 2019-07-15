@@ -25,6 +25,7 @@ class healingWave extends Component {
           talents.tidalFocus,
           talents.healingWay,
           talents.purification,
+          talents.amplifyMagic,
         ] }
         formValues={ this.props.formValues }
       />

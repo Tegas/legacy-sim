@@ -24,6 +24,7 @@ class renew extends Component {
           talents.improvedRenew,
           talents.mentalAgility,
           talents.spiritualHealing,
+          talents.amplifyMagic,
         ] }
         formValues={ this.props.formValues }
       />

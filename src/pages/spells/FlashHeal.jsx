@@ -22,6 +22,7 @@ class flashHeal extends Component {
         spell={ spells.flashHeal }
         talents={ [
           talents.spiritualHealing,
+          talents.amplifyMagic,
         ] }
         formValues={ this.props.formValues }
       />

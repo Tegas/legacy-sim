@@ -23,6 +23,8 @@ class flashOfLight extends Component {
         talents={ [
           talents.healingLight,
           talents.illumination,
+          talents.blessingOfLight,
+          talents.amplifyMagic,
         ] }
         formValues={ this.props.formValues }
       />

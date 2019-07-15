@@ -23,6 +23,7 @@ class holyNova extends Component {
         talents={ [
           talents.mentalAgility,
           talents.spiritualHealing,
+          talents.amplifyMagic,
         ] }
         formValues={ this.props.formValues }
       />

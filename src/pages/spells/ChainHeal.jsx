@@ -23,6 +23,7 @@ class chainHeal extends Component {
         talents={ [
           talents.tidalFocus,
           talents.purification,
+          talents.amplifyMagic,
         ] }
         formValues={ this.props.formValues }
       />

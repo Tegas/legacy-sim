@@ -1,5 +1,14 @@
 /* eslint-disable no-param-reassign */
 
+export const amplifyMagic = {
+  field: 'amplifyMagic',
+  name: 'Amplify Magic (with +50% talent)',
+  description: 'Amplifies magic used against the targeted party member, increasing damage taken from spells by up to 75(112) and healing spells by up to 150(225)',
+  effect: ({ character }) => {
+    character.healing = +character.healing + 225;
+  },
+};
+
 export const improvedRegrowth = {
   field: 'improvedRegrowth',
   name: 'Improved Regrowth',
@@ -105,6 +114,22 @@ export const illumination = {
   name: 'Illumination',
   description: 'After getting a critical effect from your Flash of Light, Holy Light, or Holy Shock heal spell, gives you a 100% chance to gain Mana equal to the base cost of the spell.',
   effect: ({ modifiedRank, rank, character }) => { modifiedRank.mana -= ((character.crit / 100) * rank.mana); },
+};
+
+export const blessingOfLight = {
+  field: 'blessingOfLight',
+  name: 'Blessing of Light',
+  description: 'Increases the effects of Holy Light spells used on the target by up to 400 and the effect Flash of Light spells used on the target by up to 115.',
+  effect: ({ modifiedRank, rank, spell }) => {
+    if (spell.name === 'Flash Of Light') {
+      modifiedRank.min += 115;
+      modifiedRank.max += 115;
+    } else if (spell.name === 'Holy Light') {
+      const holyLightCoefficients = [0.0, 0.2, 0.4, 0.7, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+      modifiedRank.min += (holyLightCoefficients[rank.rank] * 400);
+      modifiedRank.max += (holyLightCoefficients[rank.rank] * 400);
+    }
+  },
 };
 
 export const mentalAgility = {

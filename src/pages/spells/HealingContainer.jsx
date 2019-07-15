@@ -38,6 +38,9 @@ class HealingContainer extends Component {
   }
 
   computeSpellDetails({ modifiedSpell, modifiedRank, modifiedCharacter, target, spell, rank }) {
+
+    console.log(modifiedCharacter);
+    
     const lowLevelPenalty = (1 - ((20 - Math.min(rank.level, 20)) * 0.0375));
     const coefficient = (Math.min(rank.castTime, 3.5) / 3.5) * lowLevelPenalty;
     const directCoefficient = spell.coefficient ? (spell.coefficient * lowLevelPenalty) : coefficient;

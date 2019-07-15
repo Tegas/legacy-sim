@@ -27,6 +27,7 @@ class rejuvenation extends Component {
           talents.improvedRejuvenation,
           talents.giftOfNature,
           talents.moonglow,
+          talents.amplifyMagic,
           talents.t2Druid8set,
           talents.t3Druid4set,
         ] }

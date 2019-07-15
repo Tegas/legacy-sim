@@ -29,6 +29,7 @@ class healingTouch extends Component {
           talents.tranquilSpirit,
           talents.moonglow,
           talents.naturesGrace,
+          talents.amplifyMagic,
           talents.t3Druid4set,
           talents.t3Druid8set,
           talents.idolOfHealth,
