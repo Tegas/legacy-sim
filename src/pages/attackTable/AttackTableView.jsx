@@ -9,9 +9,6 @@ import {
 } from 'recharts';
 import './attackTable.css';
 
-
-const dataz = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
-                  {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
 const COLORS = ['OrangeRed', 'purple', 'MediumBlue', 'teal', 'olive', 'black', 'gray'];
 
 const AttackTableView = ({
@@ -96,9 +93,9 @@ const AttackTableView = ({
                     </tr>
                     <tr className="">
                       <th></th>
-                      <td>Auto Attack Damage</td>
-                      <td>Special Attack Damage</td>
-                      <td>Dual Wield Damage</td>
+                      <td>Auto Attack</td>
+                      <td>Special Attack</td>
+                      <td>Dual Wield</td>
                     </tr>
                     <tr className="combat-table_miss">
                       <th>Miss</th>

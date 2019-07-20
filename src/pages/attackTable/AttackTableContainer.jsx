@@ -42,7 +42,7 @@ class AttackTableContainer extends Component {
     const baseWeaponSkill = Math.min(300, skill);
 
     let missChance = attackType === 'dual' ? 19.0 : 0.0;
-    if (defense - skill > 11) {
+    if (defense - skill > 10) {
       missChance += 5 + (targetLevel * 5 - skill) * 0.2;
     } else {
       missChance += 5 + (targetLevel * 5 - skill) * 0.1;
