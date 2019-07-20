@@ -7,14 +7,14 @@ import {
   Pie,
   Cell,
 } from 'recharts';
-import './combatTable.css';
+import './attackTable.css';
 
 
 const dataz = [{name: 'Group A', value: 400}, {name: 'Group B', value: 300},
                   {name: 'Group C', value: 300}, {name: 'Group D', value: 200}];
 const COLORS = ['OrangeRed', 'purple', 'MediumBlue', 'teal', 'olive', 'black', 'gray'];
 
-const CombatTableView = ({
+const AttackTableView = ({
   attackTables
 }) => (
     <div>
@@ -177,12 +177,24 @@ const CombatTableView = ({
           </div>
         </div>
       </div>
+      <div>
+    <hr />
+    <p>sources</p>
+    <ul>
+      <li>
+        <a href="https://github.com/magey/classic-warrior/wiki/Attack-table">https://github.com/magey/classic-warrior/wiki/Attack-table</a>
+      </li>
+      <li>
+        <a href="https://vanilla-wow.fandom.com/wiki/Dual_wield">https://vanilla-wow.fandom.com/wiki/Dual_wield</a>
+      </li>
+    </ul>
+      </div>
     </div>
   );
 
-CombatTableView.propTypes = {
+AttackTableView.propTypes = {
   armorTable: PropTypes.arrayOf(PropTypes.any),
   armor: PropTypes.any,
 };
 
-export default CombatTableView;
+export default AttackTableView;

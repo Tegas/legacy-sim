@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { reduxForm, propTypes, getFormValues } from 'redux-form';
-import CombatTableView from './CombatTableView';
+import AttackTableView from './AttackTableView';
 
-class CombatTableContainer extends Component {
+class AttackTableContainer extends Component {
   componentWillMount() {
     this.props.initialize({
       skill: 300,
@@ -146,7 +146,7 @@ class CombatTableContainer extends Component {
 
   render() {
     return (
-      <CombatTableView
+      <AttackTableView
         formValues={ this.props.formValues }
         attackTables={ this.computeAttackTables() }
       />
@@ -154,13 +154,13 @@ class CombatTableContainer extends Component {
   }
 }
 
-CombatTableContainer.defaultProps = {
+AttackTableContainer.defaultProps = {
   formValues: {},
 };
 
 const mapStateToProps = state => {
   return {
-    formValues: getFormValues('CombatTableContainer')(state),
+    formValues: getFormValues('AttackTableContainer')(state),
   };
 };
 
@@ -169,6 +169,6 @@ const mapDispatchToProps = dispatch => ({
   }, dispatch),
 });
 
-CombatTableContainer.propTypes = propTypes;
+AttackTableContainer.propTypes = propTypes;
 
-export default reduxForm({ form: 'CombatTableContainer' })(connect(mapStateToProps, mapDispatchToProps)(CombatTableContainer));
+export default reduxForm({ form: 'AttackTableContainer' })(connect(mapStateToProps, mapDispatchToProps)(AttackTableContainer));

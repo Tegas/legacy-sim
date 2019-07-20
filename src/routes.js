@@ -24,7 +24,7 @@ import NotFoundPage from './pages/not-found/NotFoundPage';
 import ResistancesContainer from './pages/resistances/ResistancesContainer';
 import ArmorContainer from './pages/armor/ArmorContainer';
 import RegenContainer from './pages/regen/RegenContainer';
-import CombatTableContainer from './pages/combatTable/CombatTableContainer';
+import AttackTableContainer from './pages/attackTable/AttackTableContainer';
 
 const publicPath = '/';
 
@@ -40,7 +40,7 @@ class Routes extends Component {
               <Route exact path="/regen" component={ RegenContainer } />
               <Route exact path="/gear" component={ GearPage } />
               <Route exact path="/weapon" component={ WeaponPage } />
-              <Route exact path="/combat" component={ CombatTableContainer } />
+              <Route exact path="/attack" component={ AttackTableContainer } />
               <Route path="/spell" component={ SpellContainer } />
               <Route path="/healing-touch" component={ HealingTouch } />
               <Route path="/rejuvenation" component={ Rejuvenation } />

@@ -17,7 +17,7 @@ class HomePage extends Component {
             <li><NavLink to="/regen">Mana Regeneration</NavLink></li>
             <li><NavLink to="/gear">Gear</NavLink></li>
             <li><NavLink to="/weapon">Weapons</NavLink></li>
-            <li><NavLink to="/combat">Combat Table</NavLink></li>
+            <li><NavLink to="/attack">Attack Table</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
           </ul>
         </div>
