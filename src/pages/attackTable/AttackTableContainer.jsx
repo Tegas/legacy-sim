@@ -59,7 +59,7 @@ class AttackTableContainer extends Component {
 
     const dodgeChance = Math.max(5 + (targetLevel * 5 - skill) * 0.1, 0);
     const critChance = crit + (baseWeaponSkill - defense) * (baseWeaponSkill - defense < 0 ? 0.2 : 0.4) - 1.8;
-    const parryChance = hasParry ? Math.max(5.0 + ((defense - skill) * 0.6), 0) : 0.0
+    const parryChance = hasParry ? Math.max(12.5 + ((defense - skill) * 0.1), 0) : 0.0
     const blockChance = hasBlock ? Math.min(5.0, 5 + (targetLevel * 5 - skill) * 0.1) : 0.0;
     const glancingChance = attackType === 'special' ? 0.0 : 10 + (targetLevel * 5 - Math.min(attackerLevel * 5, skill)) * 2.0;
     const lowend = Math.min(1.3 - 0.05*(defense - skill), 0.91);
