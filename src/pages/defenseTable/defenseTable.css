@@ -1,0 +1,15 @@
+.combat-table_miss { color: OrangeRed; }
+.combat-table_dodge { color: purple; }
+.combat-table_parry { color: MediumBlue; }
+.combat-table_block { color: teal; }
+.combat-table_glancing { color: olive; }
+.combat-table_crit { color: black; }
+.combat-table_hit { color: gray; }
+
+.combat-table_note {
+    font-size: 75%;
+    color: gray;
+}
+.combat-table {
+    min-width: 70%;
+}
