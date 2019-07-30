@@ -117,7 +117,7 @@ const AttackTableView = ({
                     </tr>
                     <tr className="combat-table_parry">
                       <th>
-                      <Field name='hasParry' id='hasParry' component='input' type='checkbox' /> Parry
+                      <Field name='hasParry' id='hasParry' component='input' type='checkbox' /> Parry*
                       </th>
                       <td>{attackTables.auto.parryChance}%</td>
                       <td>{attackTables.special.parryChance}%</td>
@@ -176,6 +176,7 @@ const AttackTableView = ({
       </div>
       <div>
     <hr />
+    <p>* Parry formula is still being determined.</p>
     <p>sources</p>
     <ul>
       <li>
