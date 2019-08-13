@@ -182,7 +182,7 @@ export const t2Priest8set = {
   field: 't2Priest8set',
   name: 'T2 8 Set Bonus',
   description: 'Your Greater Heals now have a heal over time component equivalent to a rank 5 renew.',
-  effect: ({ modifiedRank, modifiedSpell }) => { modifiedRank.hotTick = 245/5; modifiedRank.duration = 15; modifiedSpell.hotTick = true; },
+  effect: ({ modifiedRank, modifiedSpell }) => { modifiedRank.hotTick = 315/5; modifiedRank.duration = 15; modifiedSpell.hot = true; },
 };
 
 export const improvedHealingWave = {
