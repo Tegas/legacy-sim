@@ -22,7 +22,7 @@ class ArmorContainer extends Component {
     const attackerLevel = +this.props.formValues.attackerLevel;
     const targetLevel = +this.props.formValues.targetLevel;
     const armorTable = [];
-    for (let armor = 0; armor <= 21000; armor += 100) {
+    for (let armor = 0; armor <= 17500; armor += 100) {
       const reduction = this.computeDamageReduction(armor, attackerLevel, targetLevel);
       armorTable.push({
         armor,
