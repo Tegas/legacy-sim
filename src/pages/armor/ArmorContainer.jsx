@@ -35,7 +35,7 @@ class ArmorContainer extends Component {
 
   computeDamageReduction(armor, attackerLevel, targetLevel) {
     return Math.min(
-      armor / (armor + 400 + 85 * (attackerLevel + 4.5 * Math.max(attackerLevel - targetLevel, 0))),
+      armor / (armor + 400 + 85 * attackerLevel),
       0.75);
   }
 
