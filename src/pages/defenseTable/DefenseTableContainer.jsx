@@ -33,7 +33,7 @@ class DefenseTableContainer extends Component {
     const plusBlock = +this.props.formValues.plusBlock;
     const plusDodge = +this.props.formValues.plusDodge;
     const plusParry = +this.props.formValues.plusParry;
-    const playerLevel = +this.props.formValues.playerLevel;
+    // const playerLevel = +this.props.formValues.playerLevel;
     const mobLevel = +this.props.formValues.mobLevel;
     const hasParry = !!this.props.formValues.hasParry;
     const hasBlock = !!this.props.formValues.hasBlock;

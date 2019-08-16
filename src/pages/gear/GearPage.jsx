@@ -53,9 +53,9 @@ class GearPage extends Component {
         return false;
       }
       if (
-        ((classType == 'shaman' || classType == 'hunter') && item.type == 'plate')
-        || ((classType == 'rogue' || classType == 'druid') && (item.type == 'plate' || item.type == 'mail'))
-        || ((classType == 'priest' || classType == 'mage' || classType == 'warlock') && (item.type == 'plate' || item.type == 'mail' || item.type == 'leather'))
+        ((classType === 'shaman' || classType === 'hunter') && item.type === 'plate')
+        || ((classType === 'rogue' || classType === 'druid') && (item.type === 'plate' || item.type === 'mail'))
+        || ((classType === 'priest' || classType === 'mage' || classType === 'warlock') && (item.type === 'plate' || item.type === 'mail' || item.type === 'leather'))
       ) {
         return false;
       }

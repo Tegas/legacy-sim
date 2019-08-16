@@ -1,11 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import { NavLink } from 'react-router-dom';
 
-const StatValueView = ({
-
-}) => (
+const StatValueView = () => (
         <div className='row columns'>
             <div className='row'>
                 <div className='large-3 medium-4 small-6 columns'>

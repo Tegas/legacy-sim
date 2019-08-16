@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import { getFormValues } from 'redux-form';
 import items from '../../assets/data/items';
 
 

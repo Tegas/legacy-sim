@@ -26,6 +26,7 @@ import ArmorContainer from './pages/armor/ArmorContainer';
 import RegenContainer from './pages/regen/RegenContainer';
 import AttackTableContainer from './pages/attackTable/AttackTableContainer';
 import DefenseTableContainer from './pages/defenseTable/DefenseTableContainer';
+import Analytics from 'react-router-ga';
 
 const publicPath = '/';
 
@@ -33,36 +34,38 @@ class Routes extends Component {
     render() {
       return (
         <HashRouter>
-          <Switch>
-              <Route exact path={ publicPath } component={ HomePage } />
-              <Route exact path="/home" component={ HomePage } />
-              <Route exact path="/resistances" component={ ResistancesContainer } />
-              <Route exact path="/armor" component={ ArmorContainer } />
-              <Route exact path="/regen" component={ RegenContainer } />
-              <Route exact path="/gear" component={ GearPage } />
-              <Route exact path="/weapon" component={ WeaponPage } />
-              <Route exact path="/attack" component={ AttackTableContainer } />
-              <Route exact path="/defense" component={ DefenseTableContainer } />
-              <Route path="/spell" component={ SpellContainer } />
-              <Route path="/healing-touch" component={ HealingTouch } />
-              <Route path="/rejuvenation" component={ Rejuvenation } />
-              <Route path="/regrowth" component={ Regrowth } />
-              <Route path="/greater-heal" component={ GreaterHeal } />
-              <Route path="/flash-heal" component={ FlashHeal } />
-              <Route path="/renew" component={ Renew } />
-              <Route path="/flash-of-light" component={ FlashOfLight } />
-              <Route path="/holy-light" component={ HolyLight } />
-              <Route path="/heal" component={ Heal } />
-              <Route path="/holy-nova" component={ HolyNova } />
-              <Route path="/prayer-of-healing" component={ PrayerOfHealing } />
-              <Route path="/lesser-healing-wave" component={ LesserHealingWave } />
-              <Route path="/healing-wave" component={ HealingWave } />
-              <Route path="/chain-heal" component={ ChainHeal } />
-              <Route path="/shadow-bolt" component={ ShadowBolt } />
+          <Analytics id="UA-106746928-1" debug>
+            <Switch>
+                <Route exact path={ publicPath } component={ HomePage } />
+                <Route exact path="/home" component={ HomePage } />
+                <Route exact path="/resistances" component={ ResistancesContainer } />
+                <Route exact path="/armor" component={ ArmorContainer } />
+                <Route exact path="/regen" component={ RegenContainer } />
+                <Route exact path="/gear" component={ GearPage } />
+                <Route exact path="/weapon" component={ WeaponPage } />
+                <Route exact path="/attack" component={ AttackTableContainer } />
+                <Route exact path="/defense" component={ DefenseTableContainer } />
+                <Route path="/spell" component={ SpellContainer } />
+                <Route path="/healing-touch" component={ HealingTouch } />
+                <Route path="/rejuvenation" component={ Rejuvenation } />
+                <Route path="/regrowth" component={ Regrowth } />
+                <Route path="/greater-heal" component={ GreaterHeal } />
+                <Route path="/flash-heal" component={ FlashHeal } />
+                <Route path="/renew" component={ Renew } />
+                <Route path="/flash-of-light" component={ FlashOfLight } />
+                <Route path="/holy-light" component={ HolyLight } />
+                <Route path="/heal" component={ Heal } />
+                <Route path="/holy-nova" component={ HolyNova } />
+                <Route path="/prayer-of-healing" component={ PrayerOfHealing } />
+                <Route path="/lesser-healing-wave" component={ LesserHealingWave } />
+                <Route path="/healing-wave" component={ HealingWave } />
+                <Route path="/chain-heal" component={ ChainHeal } />
+                <Route path="/shadow-bolt" component={ ShadowBolt } />
 
-              <Route exact path="/about" component={ AboutPage } />
-              <Route path='*' component={ NotFoundPage } />
-          </Switch >
+                <Route exact path="/about" component={ AboutPage } />
+                <Route path='*' component={ NotFoundPage } />
+            </Switch >
+          </Analytics>
         </HashRouter>
       );
     }

@@ -6,7 +6,7 @@ import './index.css';
 import './foundation.min.css';
 import Routes from './routes';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, compose } from 'redux';
+import { createStore } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 
 const rootReducer = combineReducers({

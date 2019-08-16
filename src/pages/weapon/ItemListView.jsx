@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
-import { NavLink } from 'react-router-dom';
 
 const ItemListView = ({
     items,
