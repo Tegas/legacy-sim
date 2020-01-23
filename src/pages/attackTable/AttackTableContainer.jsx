@@ -41,7 +41,7 @@ class AttackTableContainer extends Component {
     const defense = targetLevel * 5;
     const baseWeaponSkill = Math.min(300, skill);
 
-    let missChance = attackType === 'dual' ? 19.0 : 0.0;
+    let missChance = 0.0;
     if (defense - skill > 10) {
       missChance += 5 + (targetLevel * 5 - skill) * 0.2;
     } else {
@@ -49,6 +49,11 @@ class AttackTableContainer extends Component {
     }
     // low level bonus
     missChance *= (Math.min(10, targetLevel) / 10); // Note, unsure if this affects dual weild... but you can't duel wield < lvl 10
+
+    // New science says DualWieldMissChance = NormalMissChance * 0.8 + 20%
+    if (attackType === 'dual') {
+      missChance = (missChance * 0.8) + 20;
+    }
 
     // Skill difference penalty
     if (defense - skill > 10 && hit >= 1) {
