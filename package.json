@@ -8,7 +8,7 @@
     "react-redux": "7.1.0",
     "react-router-dom": "4.3.1",
     "react-router-ga": "1.2.1",
-    "react-scripts": "3.1.1",
+    "react-scripts": "5.0.1",
     "recharts": "1.7.1",
     "redux": "4.0.4",
     "redux-form": "8.2.6"
