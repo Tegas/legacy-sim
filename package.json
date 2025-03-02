@@ -8,7 +8,7 @@
 		"build": "webpack",
 		"start": "webpack serve --open --mode=development",
 		"pre-push": "npm run lint && npm run test && npm run build",
-		"deploy": "npm run build && npm run add-domain && gh-pages -d dist"
+		"deploy": "npm run build && gh-pages -d dist"
 	},
 	"repository": {
 		"type": "git",
