@@ -1,0 +1,58 @@
+body {
+	min-width: 320px;
+}
+
+dt {
+	float: left;
+	clear: left;
+	padding-right: 8px;
+	color: var(--muted-color);
+}
+dt::after {
+	content: ':';
+}
+dd {
+	padding: 0 0 0.5em 0;
+}
+
+dfn {
+	font-size: 67%;
+	color: var(--muted-color);
+	vertical-align: text-top;
+	font-style: normal;
+	padding-left: 1px;
+}
+
+article {
+	margin-bottom: 0;
+}
+
+main > footer {
+	margin: var(--block-spacing-vertical) 0;
+	font-size: 75%;
+}
+
+figure {
+	margin: 1rem;
+	padding: 0.5rem;
+	background: var(--card-background-color);
+	box-shadow: var(--card-box-shadow);
+}
+
+.text-right {
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.has-tip:hover {
+	cursor: pointer;
+}
+.has-tip {
+	border-bottom: none;
+}
+
+@media only screen and (min-width: 768px) {
+	.grid.character-chart {
+		grid-template-columns: 1fr 33.3%;
+	}
+}
