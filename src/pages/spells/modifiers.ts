@@ -31,6 +31,80 @@ export const amplifyMagic: Modifier = {
 	},
 };
 
+export const livingSeed: Modifier = {
+	field: 'livingSeed',
+	name: 'Living Seed Rune',
+	description:
+		'When you critically heal your target with any non-periodic healing spell you plant a Living Seed on the target for 50% of the amount healed. The Living Seed will bloom the next time the target takes damage or receives non-periodic healing. Lasts 15 sec.',
+	effect: ({
+		modifiedRank,
+		rank,
+		modifiedSpell,
+	}: {
+		modifiedRank: SpellRank;
+		rank: SpellRank;
+		modifiedSpell: Spell;
+	}) => {
+		modifiedSpell.critMultiplier += 0.5;
+	},
+};
+
+export const t25Druid4setSod: Modifier = {
+	field: 't25Druid4setSod',
+	name: 'T2.5 4 Set Bonus',
+	description:
+		'Your critical heals with Healing Touch, Regrowth, and Nourish instantly heal the target for another 50% of the healing they dealt.',
+	effect: ({
+		modifiedRank,
+		rank,
+		modifiedSpell,
+	}: {
+		modifiedRank: SpellRank;
+		rank: SpellRank;
+		modifiedSpell: Spell;
+	}) => {
+		modifiedSpell.critMultiplier += 0.5;
+	},
+};
+
+export const mushroomIdol: Modifier = {
+	field: 'mushroomIdol',
+	name: 'Mushroom',
+	description: 'Increases healing by 3%',
+	effect: ({
+		modifiedRank,
+		rank,
+		modifiedSpell,
+	}: {
+		modifiedRank: SpellRank;
+		rank: SpellRank;
+		modifiedSpell: Spell;
+	}) => {
+		modifiedRank.min += rank.min * 0.03;
+		modifiedRank.max += rank.max * 0.03;
+		modifiedRank.hotTick += rank.hotTick * 0.03;
+	},
+};
+
+export const nourishHotBonus: Modifier = {
+	field: 'nourishHotBonus',
+	name: 'Nourish HOT Bonus',
+	description:
+		'Increases healing by 20% when target is affected by your hot.',
+	effect: ({
+		modifiedRank,
+		rank,
+		modifiedSpell,
+	}: {
+		modifiedRank: SpellRank;
+		rank: SpellRank;
+		modifiedSpell: Spell;
+	}) => {
+		modifiedRank.min += rank.min * 0.2;
+		modifiedRank.max += rank.max * 0.2;
+	},
+};
+
 export const improvedRegrowth: Modifier = {
 	field: 'improvedRegrowth',
 	name: 'Improved Regrowth',

@@ -22,6 +22,7 @@ import AttackTableContainer from './pages/attackTable/AttackTableContainer';
 import DefenseTableContainer from './pages/defenseTable/DefenseTableContainer';
 import ResistancesContainer from './pages/resistances/ResistancesContainer';
 import RegenContainer from './pages/regen/RegenContainer';
+import Nourish from './pages/spells/Nourish';
 export default () => {
 	const [location] = useHashLocation();
 
@@ -49,6 +50,7 @@ export default () => {
 			<Route path="/home" component={HomePage} />
 			<Route path="/spell" component={SpellContainer} />
 			<Route path="/healing-touch" component={HealingTouch} />
+			<Route path="/nourish" component={Nourish} />
 			<Route component={NotFoundPage} />
 		</Switch>
 	);

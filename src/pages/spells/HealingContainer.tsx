@@ -97,7 +97,9 @@ const computeSpellEffect = ({
 		? directCoefficient * +modifiedCharacter.healing
 		: 0.0;
 	const averageCritBonus =
-		((baseAverage + bonusHeal) / 2) * (totalCrit / 100);
+		(baseAverage + bonusHeal) *
+		modifiedSpell.critMultiplier *
+		(totalCrit / 100);
 	const totalDirect = baseAverage + bonusHeal + averageCritBonus;
 	const totalAverage = totalDirect + totalHot;
 	const manaEfficiency = totalAverage / mana;

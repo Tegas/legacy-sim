@@ -23,6 +23,9 @@ export default () => {
 					<p>
 						<a href="#/regrowth">Regrowth</a>
 					</p>
+					<p>
+						<a href="#/nourish">Nourish (SOD)</a>
+					</p>
 				</div>
 				<div>
 					<h2>Paladin</h2>

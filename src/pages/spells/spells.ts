@@ -6,6 +6,7 @@ export interface SpellRank {
 	min?: number;
 	max?: number;
 	hotTick?: number;
+	shield?: number;
 	duration?: number;
 }
 
@@ -13,6 +14,7 @@ export interface Spell {
 	name: string;
 	description: string;
 	direct: boolean;
+	shield?: boolean;
 	hot?: boolean;
 	coefficient?: number;
 	hotCoefficient?: number;
@@ -23,6 +25,7 @@ export interface Spell {
 export const regrowth: Spell = {
 	name: 'Regrowth',
 	description: 'Heals a friendly target instantly and over 21 sec.',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: true,
 	// Coefficients https://github.com/elysium-project/server/pull/860
@@ -125,6 +128,7 @@ export const regrowth: Spell = {
 export const healingTouch: Spell = {
 	name: 'Healing Touch',
 	description: 'Heals a friendly target',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -230,10 +234,32 @@ export const healingTouch: Spell = {
 	],
 };
 
+export const nourish: Spell = {
+	name: 'Nourish (SOD)',
+	description: 'Heals a friendly target',
+	critMultiplier: 0.5,
+	direct: true,
+	hot: false,
+	shield: true,
+	ranks: [
+		{
+			rank: 60,
+			mana: 323,
+			level: 60,
+			castTime: 2.0,
+			min: 1093,
+			max: 1283,
+			hotTick: 0,
+			shield: 0,
+		},
+	],
+};
+
 export const rejuvenation: Spell = {
 	name: 'Rejuvenation',
 	description: 'Heals the target over 12 sec.',
 	direct: false,
+	critMultiplier: 0,
 	hot: true,
 	ranks: [
 		{
@@ -330,6 +356,7 @@ export const rejuvenation: Spell = {
 export const flashHeal: Spell = {
 	name: 'Flash Heal',
 	description: 'Heals a friendly target',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -402,6 +429,7 @@ export const flashHeal: Spell = {
 export const flashOfLight: Spell = {
 	name: 'Flash Of Light',
 	description: 'Heals a friendly target',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -465,6 +493,7 @@ export const flashOfLight: Spell = {
 export const holyLight: Spell = {
 	name: 'Holy Light',
 	description: 'Heals a friendly target',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -556,6 +585,7 @@ export const renew: Spell = {
 	name: 'Renew',
 	description: 'Heals the target of damage over 15 sec.',
 	direct: false,
+	critMultiplier: 0,
 	hot: true,
 	ranks: [
 		{
@@ -644,6 +674,7 @@ export const renew: Spell = {
 export const greaterHeal: Spell = {
 	name: 'Greater Heal',
 	description: 'A slow casting spell that heals a single target',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -698,6 +729,7 @@ export const greaterHeal: Spell = {
 export const heal: Spell = {
 	name: 'Heal',
 	description: 'Heal your target',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -744,6 +776,7 @@ export const holyNova: Spell = {
 	name: 'Holy Nova',
 	description:
 		'Causes an explosion of holy light around the caster, causing Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards. These effects cause no threat.',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -807,6 +840,7 @@ export const holyNova: Spell = {
 export const prayerOfHealing: Spell = {
 	name: 'Prayer of Healing',
 	description: 'A powerful prayer heals party members within 30 yards.',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -861,6 +895,7 @@ export const prayerOfHealing: Spell = {
 export const healingWave: Spell = {
 	name: 'Healing Wave',
 	description: 'Heals a friendly target.',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -960,6 +995,7 @@ export const healingWave: Spell = {
 export const lesserHealingWave: Spell = {
 	name: 'Lesser Healing Wave',
 	description: 'Heals a friendly target.',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -1024,6 +1060,7 @@ export const chainHeal: Spell = {
 	name: 'Chain Heal',
 	description:
 		'Heals the friendly target, then jumps to heal additional nearby targets. If cast on a party member, the heal will only jump to other party members. Each jump is 50% as effective as the previous target. Heals 3 total targets.',
+	critMultiplier: 0.5,
 	direct: true,
 	hot: false,
 	ranks: [

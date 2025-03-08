@@ -158,9 +158,11 @@ const healingView = ({
 						<th style={{ width: '14%' }} className="text-right">
 							<div>Bonus Heal</div>
 						</th>
-						<th style={{ width: '14%' }} className="text-right">
-							<div>Crit Bonus</div>
-						</th>
+						{spell.critMultiplier > 0 && (
+							<th style={{ width: '14%' }} className="text-right">
+								<div>Crit Bonus</div>
+							</th>
+						)}
 						<th style={{ width: '14%' }} className="text-right">
 							<div>Total</div>
 						</th>
@@ -201,7 +203,9 @@ const healingView = ({
 									</span>
 								)}
 							</td>
-							<td className="text-right">{rank.crit}</td>
+							{spell.critMultiplier > 0 && (
+								<td className="text-right">{rank.crit}</td>
+							)}
 							<td className="text-right">{rank.total}</td>
 							{spell.hot && (
 								<td className="text-right">{rank.hotTick}</td>
