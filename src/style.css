@@ -51,6 +51,11 @@ figure {
 	border-bottom: none;
 }
 
+[data-tooltip]::before {
+	min-width: 200px;
+	white-space: normal;
+}
+
 @media only screen and (min-width: 768px) {
 	.grid.character-chart {
 		grid-template-columns: 1fr 33.3%;

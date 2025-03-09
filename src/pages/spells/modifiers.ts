@@ -69,8 +69,9 @@ export const t25Druid4setSod: Modifier = {
 
 export const mushroomIdol: Modifier = {
 	field: 'mushroomIdol',
-	name: 'Mushroom',
-	description: 'Increases healing by 3%',
+	name: 'Enchanted Mushroom',
+	description:
+		' Increases the amount healed by your Lifebloom, Nourish, and Wild Growth spells by 3%.',
 	effect: ({
 		modifiedRank,
 		rank,

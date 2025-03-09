@@ -29,7 +29,7 @@ export const regrowth: Spell = {
 	direct: true,
 	hot: true,
 	// Coefficients https://github.com/elysium-project/server/pull/860
-	coefficient: 0.3,
+	coefficient: 0.286,
 	hotCoefficient: 0.5,
 	ranks: [
 		{
@@ -238,6 +238,7 @@ export const nourish: Spell = {
 	name: 'Nourish (SOD)',
 	description: 'Heals a friendly target',
 	critMultiplier: 0.5,
+	coefficient: 0.357,
 	direct: true,
 	hot: false,
 	shield: true,
