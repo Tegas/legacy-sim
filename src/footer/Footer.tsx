@@ -2,7 +2,7 @@ export default () => (
 	<footer>
 		<div>
 			Source:{' '}
-			<a href="https://tegas.github.io/legacy-sim/" className="secondary">
+			<a href="https://github.com/Tegas/legacy-sim" className="secondary">
 				Code
 			</a>
 		</div>
