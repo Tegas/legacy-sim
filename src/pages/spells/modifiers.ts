@@ -3,9 +3,10 @@
 import { Spell, SpellRank } from './spells';
 
 export interface Character {
+	/** Amount of healing power. */
 	healing?: number;
+	/** Crit percentage (0.00 - 100.00) */
 	crit?: number;
-	damage?: number;
 }
 
 export interface Modifier {
@@ -51,7 +52,7 @@ export const livingSeed: Modifier = {
 
 export const t25Druid4setSod: Modifier = {
 	field: 't25Druid4setSod',
-	name: 'T2.5 4 Set Bonus',
+	name: 'T2.5 4 Set (SOD)',
 	description:
 		'Your critical heals with Healing Touch, Regrowth, and Nourish instantly heal the target for another 50% of the healing they dealt.',
 	effect: ({
@@ -72,18 +73,8 @@ export const mushroomIdol: Modifier = {
 	name: 'Enchanted Mushroom',
 	description:
 		' Increases the amount healed by your Lifebloom, Nourish, and Wild Growth spells by 3%.',
-	effect: ({
-		modifiedRank,
-		rank,
-		modifiedSpell,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-		modifiedSpell: Spell;
-	}) => {
-		modifiedRank.min += rank.min * 0.03;
-		modifiedRank.max += rank.max * 0.03;
-		modifiedRank.hotTick += rank.hotTick * 0.03;
+	effect: ({ modifiedSpell }) => {
+		modifiedSpell.healingMultiplier *= 1.03;
 	},
 };
 
@@ -92,17 +83,8 @@ export const nourishHotBonus: Modifier = {
 	name: 'Nourish HOT Bonus',
 	description:
 		'Increases healing by 20% when target is affected by your hot.',
-	effect: ({
-		modifiedRank,
-		rank,
-		modifiedSpell,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-		modifiedSpell: Spell;
-	}) => {
-		modifiedRank.min += rank.min * 0.2;
-		modifiedRank.max += rank.max * 0.2;
+	effect: ({ modifiedSpell }) => {
+		modifiedSpell.healingMultiplier *= 1.2;
 	},
 };
 

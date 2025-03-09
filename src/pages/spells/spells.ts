@@ -19,6 +19,8 @@ export interface Spell {
 	coefficient?: number;
 	hotCoefficient?: number;
 	critMultiplier?: number;
+	/** Additional healing bonuses that applies to the final heal amount (includes bonus healing). */
+	healingMultiplier?: number;
 	ranks: SpellRank[];
 }
 
@@ -26,6 +28,7 @@ export const regrowth: Spell = {
 	name: 'Regrowth',
 	description: 'Heals a friendly target instantly and over 21 sec.',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: true,
 	// Coefficients https://github.com/elysium-project/server/pull/860
@@ -129,6 +132,7 @@ export const healingTouch: Spell = {
 	name: 'Healing Touch',
 	description: 'Heals a friendly target',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -239,6 +243,7 @@ export const nourish: Spell = {
 	description: 'Heals a friendly target',
 	critMultiplier: 0.5,
 	coefficient: 0.357,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	shield: true,
@@ -259,6 +264,7 @@ export const nourish: Spell = {
 export const rejuvenation: Spell = {
 	name: 'Rejuvenation',
 	description: 'Heals the target over 12 sec.',
+	healingMultiplier: 1.0,
 	direct: false,
 	critMultiplier: 0,
 	hot: true,
@@ -358,6 +364,7 @@ export const flashHeal: Spell = {
 	name: 'Flash Heal',
 	description: 'Heals a friendly target',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -431,6 +438,7 @@ export const flashOfLight: Spell = {
 	name: 'Flash Of Light',
 	description: 'Heals a friendly target',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -495,6 +503,7 @@ export const holyLight: Spell = {
 	name: 'Holy Light',
 	description: 'Heals a friendly target',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -585,6 +594,7 @@ export const holyLight: Spell = {
 export const renew: Spell = {
 	name: 'Renew',
 	description: 'Heals the target of damage over 15 sec.',
+	healingMultiplier: 1.0,
 	direct: false,
 	critMultiplier: 0,
 	hot: true,
@@ -676,6 +686,7 @@ export const greaterHeal: Spell = {
 	name: 'Greater Heal',
 	description: 'A slow casting spell that heals a single target',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -731,6 +742,7 @@ export const heal: Spell = {
 	name: 'Heal',
 	description: 'Heal your target',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -778,6 +790,7 @@ export const holyNova: Spell = {
 	description:
 		'Causes an explosion of holy light around the caster, causing Holy damage to all enemy targets within 10 yards and healing all party members within 10 yards. These effects cause no threat.',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -842,6 +855,7 @@ export const prayerOfHealing: Spell = {
 	name: 'Prayer of Healing',
 	description: 'A powerful prayer heals party members within 30 yards.',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -897,6 +911,7 @@ export const healingWave: Spell = {
 	name: 'Healing Wave',
 	description: 'Heals a friendly target.',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -997,6 +1012,7 @@ export const lesserHealingWave: Spell = {
 	name: 'Lesser Healing Wave',
 	description: 'Heals a friendly target.',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [
@@ -1062,6 +1078,7 @@ export const chainHeal: Spell = {
 	description:
 		'Heals the friendly target, then jumps to heal additional nearby targets. If cast on a party member, the heal will only jump to other party members. Each jump is 50% as effective as the previous target. Heals 3 total targets.',
 	critMultiplier: 0.5,
+	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
 	ranks: [

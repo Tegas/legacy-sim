@@ -69,6 +69,8 @@ const computeSpellEffect = ({
 	spell: Spell;
 	rank: SpellRank;
 }): SpellEffect => {
+	const healingMultiplier = modifiedSpell.healingMultiplier || 1.0;
+
 	const lowLevelPenalty = 1 - (20 - Math.min(rank.level, 20)) * 0.0375;
 	const coefficient = (Math.min(rank.castTime, 3.5) / 3.5) * lowLevelPenalty;
 	const directCoefficient = spell.coefficient
@@ -78,28 +80,32 @@ const computeSpellEffect = ({
 		? spell.hotCoefficient * lowLevelPenalty
 		: Math.min((modifiedRank.duration || 15) / 15, 1) * lowLevelPenalty;
 
-	const totalCrit = Math.min(+modifiedCharacter.crit, 100);
+	const totalCritPercent = Math.min(+modifiedCharacter.crit, 100);
 	const mana = modifiedRank.mana;
 	const castTime = Math.max(modifiedRank.castTime, 1.5);
 	const numberOfTicks = modifiedRank.duration / 3.0;
 	const modifiedNumberOfTicks = modifiedRank.duration / 3.0;
 	const bonusHot = modifiedSpell.hot
-		? hotCoefficient * +modifiedCharacter.healing
+		? hotCoefficient * +modifiedCharacter.healing * healingMultiplier
 		: 0.0;
-	const baseHotTick = Math.floor(modifiedRank.hotTick || 0);
+	const baseHotTick = Math.floor(
+		modifiedRank.hotTick * healingMultiplier || 0,
+	);
 	const bonusHotTick = Math.floor(bonusHot / numberOfTicks);
 	const totalBaseHot = baseHotTick * modifiedNumberOfTicks;
 	const totalBonusHot = bonusHotTick * modifiedNumberOfTicks;
 	const totalHot = totalBaseHot + totalBonusHot || 0.0;
 	const hotTick = totalHot / modifiedNumberOfTicks;
-	const baseAverage = ((modifiedRank.min || 0) + (modifiedRank.max || 0)) / 2;
+	const baseAverage =
+		(((modifiedRank.min || 0) + (modifiedRank.max || 0)) / 2) *
+		healingMultiplier;
 	const bonusHeal = modifiedSpell.direct
-		? directCoefficient * +modifiedCharacter.healing
+		? directCoefficient * +modifiedCharacter.healing * healingMultiplier
 		: 0.0;
 	const averageCritBonus =
 		(baseAverage + bonusHeal) *
 		modifiedSpell.critMultiplier *
-		(totalCrit / 100);
+		(totalCritPercent / 100);
 	const totalDirect = baseAverage + bonusHeal + averageCritBonus;
 	const totalAverage = totalDirect + totalHot;
 	const manaEfficiency = totalAverage / mana;
@@ -171,7 +177,6 @@ const HealingContainer = ({
 			healingTable={healingTable}
 			modifiers={modifiers}
 		>
-			<h3>Character</h3>
 			<div className="grid">
 				<div>
 					<label htmlFor="healing">
