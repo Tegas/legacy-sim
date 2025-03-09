@@ -25,13 +25,13 @@ export default () => {
 					values={values}
 					spell={spells.nourish}
 					modifiers={[
+						modifiers.livingSeed,
+						modifiers.t25Druid4setSod,
+						modifiers.mushroomIdol,
 						modifiers.improvedHealingTouch,
 						modifiers.improvedRegrowth,
 						modifiers.giftOfNature,
-						modifiers.livingSeed,
 						modifiers.tranquilSpirit,
-						modifiers.mushroomIdol,
-						modifiers.t25Druid4setSod,
 						modifiers.nourishHotBonus,
 						modifiers.moonglow,
 						modifiers.naturesGrace,

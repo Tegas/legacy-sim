@@ -37,16 +37,8 @@ export const livingSeed: Modifier = {
 	name: 'Living Seed Rune',
 	description:
 		'When you critically heal your target with any non-periodic healing spell you plant a Living Seed on the target for 50% of the amount healed. The Living Seed will bloom the next time the target takes damage or receives non-periodic healing. Lasts 15 sec.',
-	effect: ({
-		modifiedRank,
-		rank,
-		modifiedSpell,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-		modifiedSpell: Spell;
-	}) => {
-		modifiedSpell.critMultiplier += 0.5;
+	effect: ({ modifiedSpell }) => {
+		modifiedSpell.critMultiplier += 0.75;
 	},
 };
 
@@ -55,16 +47,10 @@ export const t25Druid4setSod: Modifier = {
 	name: 'T2.5 4 Set (SOD)',
 	description:
 		'Your critical heals with Healing Touch, Regrowth, and Nourish instantly heal the target for another 50% of the healing they dealt.',
-	effect: ({
-		modifiedRank,
-		rank,
-		modifiedSpell,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-		modifiedSpell: Spell;
-	}) => {
-		modifiedSpell.critMultiplier += 0.5;
+	effect: ({ modifiedSpell, character }) => {
+		console.log('crit', character.crit);
+		modifiedSpell.critMultiplier +=
+			0.75 + ((0.0 || character.crit) / 100) * 0.375;
 	},
 };
 
@@ -102,13 +88,7 @@ export const giftOfNature: Modifier = {
 	field: 'giftOfNature',
 	name: 'Gift of Nature',
 	description: 'Increases the effect of all healing spells by 10%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.min += rank.min * 0.1;
 		modifiedRank.max += rank.max * 0.1;
 		modifiedRank.hotTick += rank.hotTick * 0.1;
@@ -120,13 +100,7 @@ export const naturesGrace: Modifier = {
 	name: "Nature's Grace",
 	description:
 		'All spell criticals grace you with a blessing of nature, reducing the casting time of your next spell by 0.5 sec.',
-	effect: ({
-		modifiedRank,
-		character,
-	}: {
-		modifiedRank: SpellRank;
-		character: Character;
-	}) => {
+	effect: ({ modifiedRank, character }) => {
 		modifiedRank.castTime -= 0.5 * (character.crit / 100);
 	},
 };
@@ -136,13 +110,7 @@ export const moonglow: Modifier = {
 	name: 'Moonglow',
 	description:
 		'Reduces the Mana cost of your Moonfire, Starfire, Wrath, Healing Touch, Regrowth and Rejuvenation spells by 9%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.mana -= rank.mana * 0.09;
 	},
 };
@@ -152,13 +120,7 @@ export const tranquilSpirit: Modifier = {
 	name: 'Tranquil Spirit',
 	description:
 		'Reduces the mana cost of your Healing Touch and Tranquility spells by 10%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.mana -= rank.mana * 0.1;
 	},
 };
@@ -167,13 +129,7 @@ export const improvedRejuvenation: Modifier = {
 	field: 'improvedRejuvenation',
 	name: 'Improved Rejuvenation',
 	description: 'Increases the effect of your Rejuvenation spell by 15%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.hotTick += rank.hotTick * 0.15;
 	},
 };
@@ -183,7 +139,7 @@ export const improvedHealingTouch: Modifier = {
 	name: 'Improved Healing Touch',
 	description:
 		'Reduces the cast time of your Healing Touch spell by 0.5 sec.',
-	effect: ({ modifiedRank }: { modifiedRank: SpellRank }) => {
+	effect: ({ modifiedRank }) => {
 		modifiedRank.castTime -= 0.5;
 	},
 };
@@ -192,7 +148,7 @@ export const t2Druid8set: Modifier = {
 	field: 't2Druid8set',
 	name: 'T2 8 Set Bonus',
 	description: 'Increases the duration of your Rejuvenation spell by 3 sec.',
-	effect: ({ modifiedRank }: { modifiedRank: SpellRank }) => {
+	effect: ({ modifiedRank }) => {
 		modifiedRank.duration = 15;
 	},
 };
@@ -202,13 +158,7 @@ export const t3Druid4set: Modifier = {
 	name: 'T3 4 Set Bonus',
 	description:
 		'Reduces the mana cost of your Healing Touch, Regrowth, Rejuvenation, and Tranquility spells by 3%',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.mana -= rank.mana * 0.03;
 	},
 };
@@ -218,15 +168,7 @@ export const t3Druid8set: Modifier = {
 	name: 'T3 8 Set Bonus',
 	description:
 		'On Healing Touch critical hits, you regain 30% of the mana cost of the spell',
-	effect: ({
-		modifiedRank,
-		character,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		character: Character;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, character, rank }) => {
 		modifiedRank.mana -= (character.crit / 100) * rank.mana * 0.3;
 	},
 };
@@ -236,7 +178,7 @@ export const idolOfHealth: Modifier = {
 	name: 'Idol of Health',
 	description:
 		'Reduces the casting time of your Healing Touch spell by 0.15 sec.',
-	effect: ({ modifiedRank }: { modifiedRank: SpellRank }) => {
+	effect: ({ modifiedRank }) => {
 		modifiedRank.castTime -= 0.15;
 	},
 };
@@ -265,13 +207,7 @@ export const healingLight: Modifier = {
 	name: 'Healing Light',
 	description:
 		'Increases the amount healed by your Holy Light and Flash of Light spells by 12%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.min += rank.min * 0.12;
 		modifiedRank.max += rank.max * 0.12;
 	},
@@ -310,13 +246,7 @@ export const mentalAgility: Modifier = {
 	field: 'mentalAgility',
 	name: 'Mental Agility',
 	description: 'Reduces the mana cost of your instant cast spells by 10%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.mana -= rank.mana * 0.1;
 	},
 };
@@ -325,13 +255,7 @@ export const improvedRenew: Modifier = {
 	field: 'improvedRenew',
 	name: 'Improved Renew',
 	description: 'Increases the amount healed by your Renew spell by 15%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.hotTick += rank.hotTick * 0.15;
 	},
 };
@@ -341,7 +265,7 @@ export const divineFury: Modifier = {
 	name: 'Divine Fury',
 	description:
 		'Reduces the casting time of your Smite, Holy Fire, Heal and Greater Heal spells by 0.5 sec.',
-	effect: ({ modifiedRank }: { modifiedRank: SpellRank }) => {
+	effect: ({ modifiedRank }) => {
 		modifiedRank.castTime -= 0.5;
 	},
 };
@@ -351,13 +275,7 @@ export const improvedHealing: Modifier = {
 	name: 'Improved Healing',
 	description:
 		'Reduces the Mana cost of your Lesser Heal, Heal, and Greater Heal spells by 15%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.mana -= rank.mana * 0.15;
 	},
 };
@@ -366,13 +284,7 @@ export const spiritualHealing: Modifier = {
 	field: 'spiritualHealing',
 	name: 'Spiritual Healing',
 	description: 'Increases the amount healed by your healing spells by 10%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.min += rank.min * 0.1;
 		modifiedRank.max += rank.max * 0.1;
 		modifiedRank.hotTick += rank.hotTick * 0.1;
@@ -384,13 +296,7 @@ export const improvedPrayerOfHealing: Modifier = {
 	name: 'Improved Prayer Of Healing',
 	description:
 		'Reduces the Mana cost of your Prayer of Healing spell by 20%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.mana -= rank.mana * 0.2;
 	},
 };
@@ -412,7 +318,7 @@ export const improvedHealingWave: Modifier = {
 	name: 'Improved Healing Wave',
 	description:
 		'Reduces the casting time of your Healing Wave spell by 0.5 sec.',
-	effect: ({ modifiedRank }: { modifiedRank: SpellRank }) => {
+	effect: ({ modifiedRank }) => {
 		modifiedRank.castTime -= 0.5;
 	},
 };
@@ -421,13 +327,7 @@ export const tidalFocus: Modifier = {
 	field: 'tidalFocus',
 	name: 'Tidal Focus',
 	description: 'Reduces the Mana cost of your healing spells by 5%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.mana -= rank.mana * 0.05;
 	},
 };
@@ -437,13 +337,7 @@ export const healingWay: Modifier = {
 	name: 'Healing Way',
 	description:
 		'Your Healing Wave spells have a 100% chance to increase the effect of subsequent Healing Wave spells on that target by 6% for 15 sec.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.min += rank.min * 0.06;
 		modifiedRank.max += rank.max * 0.06;
 		modifiedRank.hotTick += rank.hotTick * 0.06;
@@ -454,13 +348,7 @@ export const purification: Modifier = {
 	field: 'purification',
 	name: 'Purification',
 	description: 'Increases the effectiveness of your healing spells by 10%.',
-	effect: ({
-		modifiedRank,
-		rank,
-	}: {
-		modifiedRank: SpellRank;
-		rank: SpellRank;
-	}) => {
+	effect: ({ modifiedRank, rank }) => {
 		modifiedRank.min += rank.min * 0.1;
 		modifiedRank.max += rank.max * 0.1;
 		modifiedRank.hotTick += rank.hotTick * 0.1;
