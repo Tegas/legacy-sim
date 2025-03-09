@@ -855,7 +855,7 @@ export const prayerOfHealing: Spell = {
 	name: 'Prayer of Healing',
 	description: 'A powerful prayer heals party members within 30 yards.',
 	critMultiplier: 0.5,
-	coefficient: 286,
+	coefficient: 0.286,
 	healingMultiplier: 1.0,
 	direct: true,
 	hot: false,
